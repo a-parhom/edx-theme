@@ -28,7 +28,7 @@ VK.Widgets.Group("vk_groups", {mode: 0, width: "auto", height: "300", color1: 'F
 <a class="twitter-timeline" href="https://twitter.com/PrometheusMOOC" data-widget-id="515105588456329218" data-tweet-limit="1">Твіти користувача @PrometheusMOOC</a>
 <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+"://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
 
-% if course.id.find("DC101") != -1:
+% if course.id == "course-v1:Prometheus+DC101+2017_T4":
   <p><strong><i>Просимо поширювати інформацію про курс онлайн та офлайн методами.</i></strong></p>
   <p><a href="/static/Постер.pdf" target="_blank">Завантажити постер</a> (його можна роздрукувати на звичайному принтері та розмістити на дошці оголошень в громаді, в навчальному закладі чи поширити будь-яким іншим способом).</p>
 % endif
