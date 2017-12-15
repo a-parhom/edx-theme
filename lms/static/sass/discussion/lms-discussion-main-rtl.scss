@@ -14,4 +14,9 @@
     font-weight: normal;
     color: #fcfcfc;
   }
+
+  .load-response-button:hover, .load-response-button:focus {
+    @include linear-gradient(top, #4fbbe4 35%, #2090d0);
+    border: 1px solid #297095;
+  }
 }
