@@ -555,3 +555,16 @@ footer a.logo {
   background: url('../../images/spinner.gif') center no-repeat;
   height: 20px;
 }
+
+ul.cert_regeneration div.cert_regen_hint {
+  display: inline-block;
+}
+
+ul.cert_regeneration a.btn.request_regeneration {
+  padding-left: 0 !important;
+  font-weight: bold !important;
+}
+
+ul.cert_regeneration a.btn.cert_regen_hint_toggle {
+  padding: 6px 0 !important;
+}
