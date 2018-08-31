@@ -284,6 +284,13 @@ html, body {
   }
 }
 
+.course-info .details section h2 {
+  text-transform: uppercase;
+  text-transform: uppercase;
+  color: $black;
+  font-weight: 700;
+}
+
 header.global.slim {
   h2 {
     text-shadow: none !important;
@@ -411,7 +418,7 @@ header.global.slim {
   color: #666;
 }
 
-.header-global.slim h2 {
+.header-global.slim h1 {
   color: $lighter-base-font-color !important;
   text-shadow: none !important;
   display: block;
@@ -428,16 +435,16 @@ header.global.slim {
   font-family: $body-font-family !important;
 }
 
-.header-global.slim h1.logo {
+.header-global.slim h1 .logo {
   margin: 0 10px 0 0;
   padding-right: 20px;
 }
 
-.header-global h1.logo a {
+.header-global h1 .logo a {
   line-height: 32px;
 }
 
-.header-global.slim h1.logo:before {
+.header-global.slim h1 .logo:before {
   content: "";
   display: block;
   height: 35px;
