@@ -457,6 +457,14 @@ header.global.slim {
   width: 1px;
 }
 
+.header-global.slim h1.hd.logo-header {
+  margin-top: 0;
+}
+
+.header-global.slim h1.hd.logo-header .course-header {
+  margin: 5px 0px 0px 0px;
+}
+
 .discussion .wrapper-footer {
   margin-top: 40px;
   clear: both;
