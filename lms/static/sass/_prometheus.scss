@@ -301,11 +301,16 @@ header.global.slim {
     font-weight: bold !important;
 }
 .header-global.slim div.course-header {
-    width: 60% !important;
+    width: 80% !important;
     text-overflow: ellipsis;
     overflow: hidden;
     display: inline-block;
     white-space: nowrap;
+}
+
+body:not(.view-in-course):not(.discussion) .header-global.slim div.course-header {
+  text-align: left;
+  font-size: 1.1rem
 }
 
 .header-global.slim h2 .provider {
@@ -470,7 +475,7 @@ header.global.slim {
 
 .header-global.slim h1.hd.logo-header {
   margin-top: 0;
-  max-width: 80%;
+  width: 80%;
 }
 
 .header-global.slim h1.hd.logo-header .course-header {
