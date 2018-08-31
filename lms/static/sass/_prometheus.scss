@@ -41,7 +41,7 @@ $white: $gray-1;
  
 //$black: #2e2e2e;
 $black: #000000;
-//$black-80: #303030;
+$black-80: #303030;
  
  
  
@@ -554,7 +554,7 @@ footer a.logo {
 .view-course-info .home {
   display: none !important;
 }
-
+/*
 .course-content .bookmark-button {
     width: 180px;
 }
@@ -563,7 +563,7 @@ footer a.logo {
   background: url('../../images/spinner.gif') center no-repeat;
   height: 20px;
 }
-
+*/
 ul.cert_regeneration div.cert_regen_hint {
   display: inline-block;
 }
