@@ -422,16 +422,16 @@ header.global.slim {
   color: $lighter-base-font-color !important;
   text-shadow: none !important;
   display: block;
-  width: 55% !important;
+  //width: 55% !important;
   float: left;
   font-weight: 600;
   letter-spacing: 0;
   margin-top: 9px;
   margin-bottom: 0;
-  text-transform: none;
-  white-space: nowrap;
-  text-overflow: ellipsis;
-  overflow: hidden;
+  //text-transform: none;
+  //white-space: nowrap;
+  //text-overflow: ellipsis;
+  //overflow: hidden;
   font-family: $body-font-family !important;
 }
 
@@ -463,6 +463,8 @@ header.global.slim {
 
 .header-global.slim h1.hd.logo-header .course-header {
   margin: 5px 0px 0px 0px;
+  text-overflow: ellipsis;
+  overflow: hidden;
 }
 
 .discussion .wrapper-footer {
