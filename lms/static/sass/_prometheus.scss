@@ -378,13 +378,20 @@ header.global.slim {
   top:51px !important;
 }
 
-.login-register, .financial-assistance-wrapper .financial-assistance-form {
+.login-register, .login-register-content, .financial-assistance-wrapper .financial-assistance-form {
   background: $white !important;
 }
 
 .login-register .section-title.lines .text, 
 .financial-assistance-wrapper .financial-assistance-form .section-title.lines .text {
   background: $white !important;
+}
+
+#login-and-registration-container {
+  border: 1px solid lightgray;
+  border-radius: 5px;
+  padding: 0px 25px;
+  margin-bottom: 25px;
 }
 
 .view-in-course .wrapper-course-material,
