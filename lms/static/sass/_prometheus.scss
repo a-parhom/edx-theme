@@ -34,20 +34,23 @@ $gray-2: #f2f2f2;
 $gray-1: #fbfbfb; //Main BG Color
 $white: $gray-1;
  
-$black: #2e2e2e;
-$black-80: #a7a7a7;
- 
+//$black: #2e2e2e;
+//$black-80: #a7a7a7;
+$black: #000000;
+$black-80: #303030;
  
  
 //-----------------
 //  Font Assignment
 //-----------------
  
-$theme-sans-font: "Source Sans","Open Sans",Verdana,Geneva,sans-serif;
+//$theme-sans-font: "Source Sans","Open Sans",Verdana,Geneva,sans-serif;
+$theme-sans-font: "Open Sans",sans-serif;
 $sans-serif: $theme-sans-font;
 $body-font-family: $sans-serif;
  
-$theme-serif-font: "Crimson Text", Georgia, Cambria, "Times New Roman", Times, serif;
+//$theme-serif-font: "Crimson Text", Georgia, Cambria, "Times New Roman", Times, serif;
+$theme-serif-font: $sans-serif;
 $serif: $theme-serif-font;
  
  
@@ -360,7 +363,7 @@ header.global.slim {
   border: 1px solid #c6c6c6 !important;
 }
 
-.header-global .user .dropdown {
+.header-global .user .user-dropdown {
   height: 42px;
   border-top-left-radius: 0;
   border-bottom-left-radius: 0;
@@ -371,7 +374,7 @@ header.global.slim {
   border: 1px solid #c6c6c6 !important;
 }
 
-.header-global .user .dropdown-menu {
+.header-global .user .user-dropdown-menu {
   top:51px !important;
 }
 
