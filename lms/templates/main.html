@@ -150,6 +150,10 @@ from pipeline_mako import render_require_js_path_overrides
         <%include file="${static.get_template_path('footer.html')}" />
     % endif
 
+    % if '/login' in request.path or '/register' in request.path:
+        <%include file="themable-footer.html" />
+    % endif
+
 % if not disable_window_wrap:
   </div>
 % endif
