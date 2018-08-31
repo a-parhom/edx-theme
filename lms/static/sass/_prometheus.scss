@@ -308,9 +308,14 @@ header.global.slim {
     white-space: nowrap;
 }
 
-body:not(.view-in-course):not(.discussion) .header-global.slim div.course-header {
+body:not(.view-in-course):not(.discussion):not(.None) .header-global.slim div.course-header {
   text-align: left;
-  font-size: 1.1rem
+  font-size: 1.1rem;
+  width: 60% !important;
+  margin-top: 0;
+}
+body:not(.view-in-course):not(.discussion):not(.None) .header-global.slim h1.hd.logo-header {
+  text-align: left;
 }
 
 .header-global.slim h2 .provider {
