@@ -300,6 +300,13 @@ header.global.slim {
 .header-global.slim h2 .course-name {
     font-weight: bold !important;
 }
+.header-global.slim div.course-header {
+    width: 60% !important;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    display: inline-block;
+    white-space: nowrap;
+}
 
 .header-global.slim h2 .provider {
     font-weight: normal !important;
@@ -433,6 +440,10 @@ header.global.slim {
   //text-overflow: ellipsis;
   //overflow: hidden;
   font-family: $body-font-family !important;
+}
+
+.header-global.slim .course-header {
+  width: auto;
 }
 
 .header-global.slim h1 .logo {
