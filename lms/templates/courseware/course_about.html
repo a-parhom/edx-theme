@@ -5,6 +5,7 @@ from django.core.urlresolvers import reverse
 from courseware.courses import get_course_about_section
 from django.conf import settings
 from edxmako.shortcuts import marketing_link
+from openedx.core.djangolib.markup import HTML
 from openedx.core.lib.courses import course_image_url
 %>
 
@@ -19,32 +20,9 @@ from openedx.core.lib.courses import course_image_url
 </%block>
 
 <%block name="js_extra">
-  ## CourseTalk widget js script
-  % if show_coursetalk_widget:
-      <script src="//d3q6qq2zt8nhwv.cloudfront.net/s/js/widgets/coursetalk-read-reviews.js"></script>
-  % endif
   <script type="text/javascript">
-  function getParameterByName(name, url) {
-    if (!url) url = window.location.href;
-    name = name.replace(/[\[\]]/g, "\\$&");
-    var regex = new RegExp("[?&]" + name + "(=([^&#]*)|&|#|$)"),
-        results = regex.exec(url);
-    if (!results) return null;
-    if (!results[2]) return '';
-    return decodeURIComponent(results[2].replace(/\+/g, " "));
-  }
-
   (function() {
     $(".register").click(function(event) {
-      /* To track and register users from third-party institutions */
-      /* if (getParameterByName('enrollment_action')) {
-        $("#class_enroll_form").find('input[name="enrollment_action"]').val( getParameterByName('enrollment_action') )
-      }*/
-      if (getParameterByName('origin')) {
-        $("<input type='hidden' />").attr("name","origin").attr("value",getParameterByName('origin')).prependTo("#class_enroll_form");
-        /*$("#class_enroll_form").find('input[name="enrollment_action"]').val( getParameterByName('origin') )*/
-      }
-      /* ... */
       $("#class_enroll_form").submit();
       event.preventDefault();
     });
@@ -110,18 +88,7 @@ from openedx.core.lib.courses import course_image_url
           location.href = xhr.responseText;
         }
       } else if (xhr.status == 403) {
-        /* ...  */
-          /*if (getParameterByName('enrollment_action')) {
-            location.href = "${reverse('register_user')}?course_id=${course.id | u}&enrollment_action="+getParameterByName('enrollment_action');
-          } else {*/
-          /* ...  */
-          // location.href = "${reverse('register_user')}?course_id=${course.id | u}&enrollment_action=enroll";
-          
-          if (getParameterByName('origin')) {
-            location.href = "${reverse('register_user')}?course_id=${course.id | u}&enrollment_action=enroll&origin=" + getParameterByName('origin')
-          } else {
-            location.href = "${reverse('register_user')}?course_id=${course.id | u}&enrollment_action=enroll";
-          }
+          location.href = "${reverse('register_user')}?course_id=${course.id | u}&enrollment_action=enroll";
       } else {
         $('#register_error').html(
             (xhr.responseText ? xhr.responseText : "${_("An error occurred. Please try again later.")}")
@@ -148,7 +115,7 @@ from openedx.core.lib.courses import course_image_url
         <div class="heading-group">
           <h1>
             ${course.display_name_with_default_escaped}
-            ## <a href="#">${course.display_org_with_default | h}</a>
+            ## <button type="button">${course.display_org_with_default | h}</button>
           </h1>
         </div>
 
@@ -257,21 +224,40 @@ from openedx.core.lib.courses import course_image_url
         <ol class="important-dates">
           ## <li class="important-dates-item"><span class="icon fa fa-info-circle" aria-hidden="true"></span><p class="important-dates-item-title">${_("Course Number")}</p><span class="important-dates-item-text course-number">${course.display_number_with_default | h}</span></li>
           % if not course.start_date_is_still_default:
-            <li class="important-dates-item"><span class="icon fa fa-calendar" aria-hidden="true"></span><p class="important-dates-item-title">${_("Classes Start")}</p><span class="important-dates-item-text start-date">${course.start_datetime_text()}</span></li>
+              <%
+                  course_start_date = course.start
+              %>
+            <li class="important-dates-item">
+              <span class="icon fa fa-calendar" aria-hidden="true"></span>
+              <p class="important-dates-item-title">${_("Classes Start")}</p>
+              % if isinstance(course_start_date, str):
+                  <span class="important-dates-item-text start-date">${course_start_date}</span>
+              % else:
+                  <%
+                     course_date_string = course_start_date.strftime('%Y-%m-%dT%H:%M:%S%z')
+                  %>
+                  <span class="important-dates-item-text start-date localized_datetime" data-format="shortDate" data-datetime="${course_date_string}"></span>
+              % endif
+            </li>
           % endif
             ## We plan to ditch end_date (which is not stored in course metadata),
             ## but for backwards compatibility, show about/end_date blob if it exists.
             % if get_course_about_section(request, course, "end_date") or course.end:
+                <%
+                    course_end_date = course.end
+                %>
+
             <li class="important-dates-item">
                 <span class="icon fa fa-calendar" aria-hidden="true"></span>
                 <p class="important-dates-item-title">${_("Classes End")}</p>
-                <span class="important-dates-item-text final-date">
-                    % if get_course_about_section(request, course, "end_date"):
-                        ${get_course_about_section(request, course, "end_date")}
-                    % else:
-                        ${course.end_datetime_text()}
-                    % endif
-                </span>
+                  % if isinstance(course_end_date, str):
+                      <span class="important-dates-item-text final-date">${course_end_date}</span>
+                  % else:
+                    <%
+                        course_date_string = course_end_date.strftime('%Y-%m-%dT%H:%M:%S%z')
+                    %>
+                    <span class="important-dates-item-text final-date localized_datetime" data-format="shortDate" data-datetime="${course_date_string}"></span>
+                  % endif
             </li>
             % endif
 
@@ -311,11 +297,9 @@ from openedx.core.lib.courses import course_image_url
         </ol>
       </div>
 
-      ## CourseTalk widget
-      % if show_coursetalk_widget:
-      <div class="coursetalk-read-reviews">
-          <div id="ct-custom-read-review-widget" data-provider="${platform_key}" data-course="${course_review_key}"></div>
-      </div>
+      ## Course reviews tool
+      % if reviews_fragment_view:
+       ${HTML(reviews_fragment_view.body_html())}
       % endif
 
       ## For now, ocw links are the only thing that goes in additional resources
@@ -359,3 +343,7 @@ from openedx.core.lib.courses import course_image_url
 %endif
 
 <%include file="../video_modal.html" />
+
+<%static:require_module_async module_name="js/dateutil_factory" class_name="DateUtilFactory">
+    DateUtilFactory.transform(iterationKey=".localized_datetime");
+</%static:require_module_async>
