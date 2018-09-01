@@ -212,7 +212,7 @@ $video-thumb-url: '../images/logo_eng.png';
 .wrapper-footer {
   background: #293a3a !important;
   color: white;
-  font-weight: 200;
+  font-weight: 400;
   line-height: 25px;
   padding: 68px 0 70px !important;
   position: relative;
@@ -253,7 +253,7 @@ $video-thumb-url: '../images/logo_eng.png';
 
 .wrapper-footer:after {
   content: "";
-  display: block;
+  display: block !important;
   background-image: url('../images/footer-bg.png');
   background-position: center 200px;
   background-repeat: no-repeat;
@@ -264,6 +264,10 @@ $video-thumb-url: '../images/logo_eng.png';
   bottom: 0;
   right: 0;
   position: absolute;
+}
+
+#discussion-container .wrapper-footer:after {
+  background-image: url('../../images/footer-bg.png');
 }
  
 .footer-three-columns-inner {
@@ -616,10 +620,16 @@ footer a.logo {
     width: 180px;
 }
 
+#discussion-container .loading-animation {
+  text-align: center;
+}
+
 #discussion-container .loading-animation span.fa.fa-spinner:before {
   content: "";
   background: url('../../images/spinner.gif') center no-repeat;
   height: 20px;
+  width: 20px;
+  display: block;
 }
 
 ul.cert_regeneration div.cert_regen_hint {
