@@ -247,6 +247,9 @@ $video-thumb-url: '../images/logo_eng.png';
 .wrapper-footer footer .footer-separator-holder {
   margin-bottom: 30px;
 }
+.wrapper-footer footer .footer-separator {
+  border-width: 0px;
+}
 
 .wrapper-footer:after {
   content: "";
