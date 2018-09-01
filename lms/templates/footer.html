@@ -10,194 +10,89 @@
 <% footer = get_footer(is_secure=is_secure) %>
 <%namespace name='static' file='static_content.html'/>
 
-% if uses_bootstrap:
-  <div class="container-fluid wrapper-footer">
-    <footer>
-      <div class="row">
-        <div class="col-md-9">
-          <nav class="navbar site-nav navbar-toggleable-sm navbar-light" aria-label="${_('About')}">
-            <ul class="navbar-nav">
-              % for item_num, link in enumerate(footer['navigation_links'], start=1):
-                <li class="nav-item">
-                  <a class="nav-link" href="${link['url']}">${link['title']}</a>
-                </li>
-              % endfor
-            </ul>
-          </nav>
+<div class="wrapper wrapper-footer">
+  <footer id="footer-openedx" class="grid-container"
+    ## When rendering the footer through the branding API,
+    ## the direction may not be set on the parent element,
+    ## so we set it here.
+    % if bidi:
+      dir=${bidi}
+    % endif
+  >
 
-          ## Site operators: Please do not remove this paragraph! This attributes back to edX and makes your acknowledgement of edX's trademarks clear.
-          <p class="copyright">${footer['copyright']} ${u" | {icp}".format(icp=getattr(settings,'ICP_LICENSE')) if getattr(settings,'ICP_LICENSE',False) else ""}</p>
-
-          <nav class="navbar legal-nav navbar-toggleable-sm navbar-light" aria-label="${_('Legal')}">
-            <ul class="navbar-nav">
-              % for item_num, link in enumerate(footer['legal_links'], start=1):
-                <li class="nav-item">
-                  <a class="nav-link" href="${link['url']}">${link['title']}</a>
-                </li>
-              % endfor
-              <li class="nav-item">
-                <a class="nav-link" href="${footer['edx_org_link']['url']}">${footer['edx_org_link']['text']}</a>
-              </li>
-            </ul>
-          </nav>
+    <div class="footer-three-columns-inner">
+      <div class="footer-column" style="min-height: 522px;">
+        <div class="textwidget custom-html-widget">
+          <h3>ПРО ПРОЕКТ</h3>
         </div>
-        <div class="col-md-3">
-          ## Please leave this link and use one of the logos provided
-          ## The OpenEdX link may be hidden when this view is served
-          ## through an API to partner sites (such as marketing sites or blogs),
-          ## which are not technically powered by Open edX.
-          % if not hide_openedx_link:
-            <div class="footer-about-openedx">
-              <p>
-                <a href="${footer['openedx_link']['url']}">
-                  <img src="${footer['openedx_link']['image']}" alt="${footer['openedx_link']['title']}" width="140" />
-                </a>
-              </p>
-            </div>
-          % endif
+        <div class="footer-separator-holder clearfix  footer-separator-left footer-separator-normal">
+          <div class="footer-separator" style="border-color: #1db4b8;border-style: solid;width: 50%;border-bottom-width: 6px;margin-top: 0px;margin-bottom: 0px"></div>
+        </div>
+        <div class="textwidget custom-html-widget">
+          <p><strong>«Prometheus»</strong> – це український громадський проект масових відкритих онлайн-курсів. Мета проекту – безкоштовно надати найкращі навчальні можливості кожному громадянину України. </p>
+          <p><a href="https://prometheus.org.ua/terms-service/">Умови надання послуг та Кодекс Честі</a></p>
+          <p><strong>Загальні питання</strong>: <a href="mailto:info@prometheus.org.ua">info@prometheus.org.ua</a></p>
+          <p><strong>Технічні питання</strong>: <a href="mailto:support@prometheus.org.ua">support@prometheus.org.ua</a></p>
+          <p>© 2018 Prometheus, some rights reserved</p>
         </div>
       </div>
-    </footer>
-  </div>
-% else:
-  <div class="wrapper wrapper-footer">
-    <footer id="footer-openedx" class="grid-container"
-      ## When rendering the footer through the branding API,
-      ## the direction may not be set on the parent element,
-      ## so we set it here.
-      % if bidi:
-        dir=${bidi}
-      % endif
-    >
-      <div class="colophon">
-        <nav class="nav-colophon" aria-label="${_('About')}">
-          ## <ol>
-          ##     % for item_num, link in enumerate(footer['navigation_links'], start=1):
-          ##     <li class="nav-colophon-0${item_num}">
-          ##       <a id="${link['name']}" href="${link['url']}">${link['title']}</a>
-          ##     </li>
-          ##     % endfor
-          ## </ol>
-          <ol>
-            <li class="nav-colophon-01">
-            ## <!--<a id="about" href="${marketing_link('ABOUT')}">-->
-            <a id="about" href="http://prometheus.org.ua/about-us/">
-                ${_("About")}
-            </a>
-            </li>
-            ## <!--</li>
-            ## <li class="nav-colophon-02">
-            ## <a id="jobs" href="${marketing_link('JOBS')}">
-            ##     ${_("Jobs")}
-            ## </a>
-            ## </li>-->
-            <li class="nav-colophon-03">
-            ## <!--<a id="press" href="${marketing_link('PRESS')}">-->
-            <a id="press" href="http://prometheus.org.ua/prometheus-start/">
-                ${"Преса"}
-            </a>
-            </li>
-            <li class="nav-colophon-04">
-            <!--<a id="faq" href="${marketing_link('FAQ')}">-->
-            <a id="faq" href="http://prometheus.org.ua/faq/">
-                ${_("FAQ")}
-            </a>
-            </li>
-            <li class="nav-colophon-05">
-            ## <!--<a id="contact" href="${marketing_link('CONTACT')}">-->
-            <a id="contact" href="http://prometheus.org.ua/about-us/#contacts">
-                ${_("Contact")}
-            </a>
-            </li>
-        </ol>
-        </nav>
-
-        % if context.get('include_language_selector', footer_language_selector_is_enabled()):
-            <%include file="${static.get_template_path('widgets/footer-language-selector.html')}"/>
-        % endif
-
-        ## <div class="wrapper-logo">
-        ##   <p>
-        ##     <a href="/">
-              ## The default logo is a placeholder.
-              ## You can either replace this link entirely or update
-              ## the FOOTER_ORGANIZATION_IMAGE in Django settings.
-              ## If you customize FOOTER_ORGANIZATION_IMAGE, then the image
-              ## can be included in the footer on other sites
-              ## (e.g. a blog or marketing front-end) to provide a consistent
-              ## user experience.  See the branding app for details.
-        ##       <img alt="organization logo" src="${footer['logo_image']}">
-        ##     </a>
-        ##   </p>
-        ## </div>
-
-        ## Site operators: Please do not remove this paragraph! This attributes back to edX and makes your acknowledgement of edX's trademarks clear.
-        ## <p class="copyright">${footer['copyright']}</p>
-        <p class="copyright">&copy; ${_("{copyright_year} {platform_name}, some rights reserved").format(
-           platform_name=settings.PLATFORM_NAME,
-           copyright_year=date.today().year)}
-        </p>
-
-        ## <nav class="nav-legal" aria-label="${_('Legal')}">
-        ##   <ul>
-        ##     % for item_num, link in enumerate(footer['legal_links'], start=1):
-        ##       <li class="nav-legal-0${item_num}">
-        ##         <a href="${link['url']}">${link['title']}</a>
-        ##       </li>
-        ##     % endfor
-        ##   </ul>
-        ## </nav>
-        <nav class="nav-legal">
-            <ul>
-              <li class="nav-legal-02">
-              ## <li class="nav-legal-01">
-          ## <!--<a href="${marketing_link('TOS')}">${_("Terms of Service and Honor Code")}</a>-->
-                <a href="http://prometheus.org.ua/terms-service/">${_("Terms of Service and Honor Code")}</a>
-              </li>
-              ## <li class="nav-legal-02">
-              ##   <a href="${marketing_link('PRIVACY')}">${_("Privacy Policy")}</a>
-              ## </li>
-            </ul>
-          </nav>
+      <div class="footer-column" style="min-height: 522px;">
+        <div class="textwidget custom-html-widget">
+          <h3>ПРОПОЗИЦІЯ СПІВПРАЦІ</h3>
+        </div>
+        <div class="footer-separator-holder clearfix  footer-separator-left footer-separator-normal">
+          <div class="footer-separator" style="border-color: #1db4b8;border-style: solid;width: 50%;border-bottom-width: 6px;margin-top: 0px;margin-bottom: 0px"></div>
+        </div>
+        <div class="textwidget custom-html-widget">
+          <p><strong>«Prometheus»</strong> пропонує співпрацю провідним університетам, компаніям та організаціям.</p>
+          <p>Ми готові безкоштовно надати наш сайт як платформу для розміщення масових відкритих онлайн-курсів під вашим брендом.</p>
+          <p>Дізнайтеся більше <a href="https://prometheus.org.ua/cooperation/" target="_blank">на цій сторінці.</a></p>
+        </div>
       </div>
-
-      ## Please leave this link and use one of the logos provided
-      ## The OpenEdX link may be hidden when this view is served
-      ## through an API to partner sites (such as marketing sites or blogs),
-      ## which are not technically powered by OpenEdX.
-      ## % if not hide_openedx_link:
-      ## <div class="footer-about-openedx">
-      ##   <p>
-      ##     <a href="${footer['openedx_link']['url']}">
-      ##       <img src="${footer['openedx_link']['image']}" alt="${footer['openedx_link']['title']}" width="140" />
-      ##     </a>
-      ##   </p>
-      ## </div>
-      ## % endif
-      <div class="powered-by">
+      <div class="footer-column" style="min-height: 522px;">
+        <div class="textwidget custom-html-widget">
+          <h3>ПРИЄДНУЙТЕСЬ ДО НАС!</h3>
+        </div>
+        <div class="footer-separator-holder clearfix  footer-separator-left footer-separator-normal">
+          <div class="footer-separator" style="border-color: #1db4b8;border-style: solid;width: 50%;border-bottom-width: 6px;margin-top: 0px;margin-bottom: 0px"></div>
+        </div>
+        <div class="textwidget custom-html-widget">
+          <p class="social">
+            <a href="https://prometheus.org.ua/blog/feed/"><img src="${static.url('images/rss.png')}"></a>
+            <a href="https://t.me/prometheusmooc"><img src="${static.url('images/tg.png')}"></a>
+            <a href="https://twitter.com/prometheusmooc"><img src="${static.url('images/tw.png')}"></a>
+            <a href="https://www.facebook.com/prometheusmooc"><img src="${static.url('images/fb.png')}"></a>
+          </p>
+        </div>
+        <div class="textwidget custom-html-widget">
+          <h3>ЗАВАНТАЖУЙТЕ ДОДАТОК</h3>
+        </div>
+        <div class="footer-separator-holder clearfix  footer-separator-left footer-separator-normal">
+          <div class="footer-separator" style="border-color: #1db4b8;border-style: solid;width: 50%;border-bottom-width: 6px;margin-top: 0px;margin-bottom: 0px"></div>
+        </div>
+        <div class="textwidget custom-html-widget">
           <p>
-            <a href="http://prometheus.org.ua" class="logo">
-              ## this is just a placeholder logo
-              ## feel free to change this logo to your own
-              ## <img alt="organiztion logo placeholder" src="/static/images/logo-placeholder.png">
-              <img src="${static.url('prometheus/images/logo_eng_bw.png')}" height="40"/>
+            <a href="https://itunes.apple.com/us/app/prometheus-online-courses/id1213523151"><img style="height: 50px;" src="${static.url('images/AppStore.png')}" alt=""></a>
+          </p>
+          <p>
+            <a href="https://play.google.com/store/apps/details?id=org.prometheus.android"><img style="width: 150px;" src="${static.url('images/google-play.png')}" alt=""></a>
+          </p>
+        </div>
+
+        <div class="powered-by">
+          <p>
+            <a href="http://openedx.org/">
+              ## greyscale logo for dark background
+              <img src="https://files.edx.org/openedx-logos/edx-openedx-logo-tag-light.png" alt="Powered by Open edX" width="150" height="50" />
             </a>
-          ## </p>
-   
-        ## <p>
-          <a href="http://openedx.org/">
-            ## standard powered-by logo
-            ## <img src="https://files.edx.org/openedx-logos/edx-openedx-logo-tag.png" alt="Powered by Open edX" width="150" height="50" />
-            ## greyscale logo for dark background
-            <img src="https://files.edx.org/openedx-logos/edx-openedx-logo-tag-light.png" alt="Powered by Open edX" width="150" height="50" />
-            ## greyscale logo for light background
-            ## <img src="https://files.edx.org/openedx-logos/edx-openedx-logo-tag-dark.png" alt="Powered by Open edX" width="150" height="50" />
-          </a>
-        </p>
+          </p>
+        </div>
       </div>
-    </footer>
-  </div>
-% endif
+    </div>
+    
+  </footer>
+</div>
+
 % if include_dependencies:
   <%static:js group='base_vendor'/>
   <%static:css group='style-vendor'/>

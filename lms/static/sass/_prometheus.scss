@@ -208,33 +208,42 @@ $video-thumb-url: '../images/logo_eng.png';
   width: 550px;
   top: 0;
 }
- 
-@mixin footer_references_style {
-  margin: 0 !important;
-  text-align: right;
-}
 
 .wrapper-footer {
-  footer {
-    .colophon {
-      width: flex-grid(1,2) !important;
+  background: #293a3a !important;
+  color: white;
+  font-weight: 200;
+  line-height: 25px;
+}
 
-      .nav-colophon {
+.wrapper-footer footer p {
+  margin-top: 10px;
+  margin-bottom: 25px;
+}
+.wrapper-footer footer .textwidget {
+  margin-bottom: 30px;
+}
 
-        li {
-          a {
-            color: tint($black, 50%);
-            font-size: 20px;
-          }
-        }
-      }
-      .copyright {
-        margin: 10px 0 8px 0 !important;
-      }
-    }
-    .powered-by {
-      width: flex-grid(1,2) !important;
-    }
+.wrapper-footer footer:after {
+  content: "";
+  background-image: url(../../images/footer-bg.png);
+  background-position: center 200px;
+  background-repeat: no-repeat;
+  background-size: cover;
+  opacity: 0.2;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  position: absolute;
+}
+ 
+.footer-three-columns-inner {
+  .footer-column {
+      width: 33.33%;
+      float: left;
+      padding: 0 15px;
+      box-sizing: border-box;
   }
 }
 .content-wrapper {
@@ -494,27 +503,6 @@ body:not(.view-in-course):not(.discussion):not(.None) .header-global.slim h1.hd.
   clear: both;
 }
 
-.wrapper-footer footer#footer-openedx .colophon .nav-colophon li a,
-.wrapper-footer footer#footer-openedx .copyright {
-  color: $dark-color !important;
-}
-
-.wrapper-footer footer#footer-openedx .powered-by a:hover, 
-.wrapper-footer footer#footer-openedx .powered-by a:focus, 
-.wrapper-footer footer#footer-openedx .powered-by a:active {
-  border-bottom: none !important;
-}
-.wrapper-footer footer#footer-openedx a:hover, 
-.wrapper-footer footer#footer-openedx a:focus, 
-.wrapper-footer footer#footer-openedx a:active {
-  box-shadow: none !important;
-}
-
-.wrapper-footer footer#footer-openedx ol,
-.wrapper-footer footer#footer-openedx ul {
-  margin-left: 0 !important;
-}
-
 .header-global.slim .nav-main, .header-global.slim .nav-global {
   display: none;
 }
@@ -600,10 +588,11 @@ footer a.logo {
     width: 180px;
 }
 
-//#discussion-container .loading-animation {
-//  background: url('../../images/spinner.gif') center no-repeat;
-//  height: 20px;
-//}
+#discussion-container .loading-animation span.fa.fa-spinner:before {
+  content: "";
+  background: url('../../images/spinner.gif') center no-repeat;
+  height: 20px;
+}
 
 ul.cert_regeneration div.cert_regen_hint {
   display: inline-block;
