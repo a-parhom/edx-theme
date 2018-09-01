@@ -214,6 +214,7 @@ $video-thumb-url: '../images/logo_eng.png';
   color: white;
   font-weight: 200;
   line-height: 25px;
+  padding: 68px 0 70px !important;
 }
 
 .wrapper-footer footer p {
@@ -223,10 +224,24 @@ $video-thumb-url: '../images/logo_eng.png';
 .wrapper-footer footer .textwidget {
   margin-bottom: 30px;
 }
+.wrapper-footer footer a:hover {
+  color: #fff;
+  text-decoration: none;
+}
+.wrapper-footer footer h3 {
+  color: white !important;
+  font-size: 18px;
+  font-weight: 700;
+}
 
-.wrapper-footer footer:after {
+.wrapper-footer footer .footer-separator {
+  margin-bottom: 20px;
+}
+
+.wrapper-footer:after {
   content: "";
-  background-image: url(../../images/footer-bg.png);
+  display: block;
+  background-image: url('../images/footer-bg.png');
   background-position: center 200px;
   background-repeat: no-repeat;
   background-size: cover;
