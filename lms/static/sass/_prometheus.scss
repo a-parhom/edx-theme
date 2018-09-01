@@ -266,7 +266,7 @@ $video-thumb-url: '../images/logo_eng.png';
   position: absolute;
 }
 
-#discussion-container .wrapper-footer:after {
+body.discussion .wrapper-footer:after {
   background-image: url('../../images/footer-bg.png');
 }
  
