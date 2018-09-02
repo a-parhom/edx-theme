@@ -344,7 +344,7 @@ header {
   }
   span.provider {
     text-transform: uppercase;
-    font-weight: 400;
+    font-weight: 400 !important;
   }
 }
 
@@ -399,7 +399,8 @@ body:not(.view-in-course):not(.discussion):not(.None) .header-global.slim h1.hd.
   background-color: $white;
   text-transform: none;
   font-size: 14px;
-  font-weight: bold;
+  //font-weight: bold;
+  font-weight: 400;
   letter-spacing: 0;
   //border-top-left-radius: 3px;
   //border-bottom-left-radius: 3px;
@@ -412,7 +413,8 @@ body:not(.view-in-course):not(.discussion):not(.None) .header-global.slim h1.hd.
 }
 .dropdown-menu-container .menu-image {
   max-width: 40px;
-  border-radius: 10%;
+  //border-radius: 10%;
+  border-radius: 100%;
 }
 .dropdown-menu-container .menu-button {
   height: 42px !important;
@@ -501,7 +503,8 @@ body:not(.view-in-course):not(.discussion):not(.None) .header-global.slim h1.hd.
 }
 
 .header-global.slim h1 {
-  color: $lighter-base-font-color !important;
+  //color: $lighter-base-font-color !important;
+  color: $black !important;
   text-shadow: none !important;
   display: block;
   //width: 55% !important;
@@ -532,13 +535,14 @@ body:not(.view-in-course):not(.discussion):not(.None) .header-global.slim h1.hd.
 
 .header-global.slim h1 .logo:before {
   content: "";
-  display: block;
+  //display: block;
+  display: none;
   height: 35px;
   position: absolute;
   right: 3px;
   top: 0;
   width: 1px;
-  background-image: linear-gradient(180deg, rgba(200,200,200,0) 0%, #c8c8c8 50%, rgba(200,200,200,0));
+  background-image: linear-gradient(180deg, rgba(200,200,200,0) 0%, #000000 50%, rgba(200,200,200,0));
   height: 100%;
   width: 1px;
 }
