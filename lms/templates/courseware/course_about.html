@@ -230,14 +230,20 @@ from openedx.core.lib.courses import course_image_url
             <li class="important-dates-item">
               <span class="icon fa fa-calendar" aria-hidden="true"></span>
               <p class="important-dates-item-title">${_("Classes Start")}</p>
-              % if isinstance(course_start_date, str):
-                  <span class="important-dates-item-text start-date">${course_start_date}</span>
+
+              % if course.advertised_start is not None:
+                  <span class="important-dates-item-text start-date">${course.advertised_start}</span>
               % else:
-                  <%
-                     course_date_string = course_start_date.strftime('%Y-%m-%dT%H:%M:%S%z')
-                  %>
-                  <span class="important-dates-item-text start-date localized_datetime" data-format="shortDate" data-datetime="${course_date_string}"></span>
+                  % if isinstance(course_start_date, str):
+                      <span class="important-dates-item-text start-date">${course_start_date}</span>
+                  % else:
+                      <%
+                         course_date_string = course_start_date.strftime('%Y-%m-%dT%H:%M:%S%z')
+                      %>
+                      <span class="important-dates-item-text start-date localized_datetime" data-format="shortDate" data-datetime="${course_date_string}"></span>
+                  % endif
               % endif
+
             </li>
           % endif
             ## We plan to ditch end_date (which is not stored in course metadata),
