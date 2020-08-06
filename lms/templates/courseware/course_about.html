@@ -24,9 +24,9 @@ from openedx.core.lib.courses import course_image_url
   (function() {
     $(".register").click(function(event) {
       //${course.id}
-    % if course.id == "course-v1:LvBS+ACMEDMGM101+2020_T3" :
+    % if "ACMEDMGM101" in course.id:
       window.location = "https://docs.google.com/forms/d/e/1FAIpQLScOm-KXzS73A02HKYOb5o7uUQw1wQE209niYJhJBNprm8rWjQ/viewform";
-    % elif course.id == "course-v1:LvBS+MEDMGM101+2020_T3":
+    % elif "MEDMGM101" in course.id:
       window.location = "https://docs.google.com/forms/d/e/1FAIpQLSe93Mg_n8AsFoqTjH4F4fIWIimZqRlBO9tb4fdZQqy-mXG5IQ/viewform";
     % else:
       $("#class_enroll_form").submit();
