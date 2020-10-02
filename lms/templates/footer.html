@@ -1,13 +1,14 @@
 ## mako
 <%page expression_filter="h"/>
 <%!
-  from django.core.urlresolvers import reverse
+  from django.urls import reverse
   from django.utils.translation import ugettext as _
   from branding.api import get_footer
   from openedx.core.djangoapps.lang_pref.api import footer_language_selector_is_enabled
   from datetime import date
 %>
 <% footer = get_footer(is_secure=is_secure) %>
+<% icp_license_info = getattr(settings, 'ICP_LICENSE_INFO', {})%>
 <%namespace name='static' file='static_content.html'/>
 
 % if uses_bootstrap:
@@ -15,7 +16,7 @@
     <footer>
       <div class="row">
         <div class="col-md-9">
-          <nav class="navbar site-nav navbar-toggleable-sm navbar-light" aria-label="${_('About')}">
+          <nav class="navbar site-nav navbar-expand-sm" aria-label="${_('About')}">
             <ul class="navbar-nav">
               % for item_num, link in enumerate(footer['navigation_links'], start=1):
                 <li class="nav-item">
@@ -25,10 +26,32 @@
             </ul>
           </nav>
 
-          ## Site operators: Please do not remove this paragraph! This attributes back to edX and makes your acknowledgement of edX's trademarks clear.
-          <p class="copyright">${footer['copyright']} ${u" | {icp}".format(icp=getattr(settings,'ICP_LICENSE')) if getattr(settings,'ICP_LICENSE',False) else ""}</p>
+          <div class="wrapper-logo">
+            <p>
+              <a href="/">
+                ## The default logo is a placeholder.
+                ## You can either replace this link entirely or update
+                ## the FOOTER_ORGANIZATION_IMAGE in Django settings.
+                ## If you customize FOOTER_ORGANIZATION_IMAGE, then the image
+                ## can be included in the footer on other sites
+                ## (e.g. a blog or marketing front-end) to provide a consistent
+                ## user experience.  See the branding app for details.
+                <img alt="${_('organization logo')}" src="${footer['logo_image']}">
+              </a>
+            </p>
+          </div>
 
-          <nav class="navbar legal-nav navbar-toggleable-sm navbar-light" aria-label="${_('Legal')}">
+          ## Site operators: Please do not remove this paragraph! This attributes back to edX and makes your acknowledgement of edX's trademarks clear.
+          <p class="copyright">${footer['copyright']}
+               % if icp_license_info.get('icp_license'):
+                ${u" | {text}".format(text=icp_license_info.get('text'))}
+                <a href="${icp_license_info.get('icp_license_link', '#')}">
+                    ${u" {icp}".format(icp=icp_license_info.get('icp_license'))}
+                </a>
+              % endif
+          </p>
+
+          <nav class="navbar legal-nav navbar-expand-sm" aria-label="${_('Legal')}">
             <ul class="navbar-nav">
               % for item_num, link in enumerate(footer['legal_links'], start=1):
                 <li class="nav-item">
@@ -126,13 +149,20 @@
               ## can be included in the footer on other sites
               ## (e.g. a blog or marketing front-end) to provide a consistent
               ## user experience.  See the branding app for details.
-        ##       <img alt="organization logo" src="${footer['logo_image']}">
+        ##       <img alt="${_('organization logo')}" src="${footer['logo_image']}">
         ##     </a>
         ##   </p>
         ## </div>
 
         ## Site operators: Please do not remove this paragraph! This attributes back to edX and makes your acknowledgement of edX's trademarks clear.
-        ## <p class="copyright">${footer['copyright']}</p>
+        ##   <p class="copyright">${footer['copyright']}
+        ##       % if icp_license_info.get('icp_license'):
+        ##         ${u" | {text}".format(text=icp_license_info.get('text'))}
+        ##         <a href="${icp_license_info.get('icp_license_link', '#')}">
+        ##             ${u" {icp}".format(icp=icp_license_info.get('icp_license'))}
+        ##         </a>
+        ##       % endif
+        ##   </p>
         <p class="copyright">&copy; ${_("{copyright_year} {platform_name}, some rights reserved").format(
            platform_name=settings.PLATFORM_NAME,
            copyright_year=date.today().year)}
@@ -145,6 +175,7 @@
         ##         <a href="${link['url']}">${link['title']}</a>
         ##       </li>
         ##     % endfor
+        ##     <li><a href="${footer['edx_org_link']['url']}">${footer['edx_org_link']['text']}</a></li>
         ##   </ul>
         ## </nav>
         <nav class="nav-legal">
@@ -158,7 +189,7 @@
               ##   <a href="${marketing_link('PRIVACY')}">${_("Privacy Policy")}</a>
               ## </li>
             </ul>
-          </nav>
+        </nav>
       </div>
 
       ## Please leave this link and use one of the logos provided
@@ -183,7 +214,7 @@
               <img src="${static.url('prometheus/images/logo_eng_bw.png')}" height="40"/>
             </a>
           ## </p>
-   
+
         ## <p>
           <a href="http://openedx.org/">
             ## standard powered-by logo
@@ -191,7 +222,7 @@
             ## greyscale logo for dark background
             <img src="https://files.edx.org/openedx-logos/edx-openedx-logo-tag-light.png" alt="Powered by Open edX" width="150" height="50" />
             ## greyscale logo for light background
-            ## <img src="https://files.edx.org/openedx-logos/edx-openedx-logo-tag-dark.png" alt="Powered by Open edX" width="150" height="50" />
+            ## <img src="https://files.edx.org/openedx-logos/edx-openedx-logo-tag-dark.png" alt="Powered by Open edX" width="150" heigh="50" />
           </a>
         </p>
       </div>
@@ -208,7 +239,4 @@
   % for url in footer_css_urls:
     <link rel="stylesheet" type="text/css" href="${url}"></link>
   % endfor
-% endif
-% if settings.FEATURES.get('ENABLE_COOKIE_CONSENT', False):
-  <%include file="widgets/cookie-consent.html" />
 % endif
