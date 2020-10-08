@@ -198,82 +198,10 @@ $login-banner-image: none;
 $register-banner-image: none;
  
 $video-thumb-url: '../images/logo_eng.png';
- 
-//-----------------
-//  Mixin Styles
-//-----------------
-@mixin login_register_h1_style {
-  clip: auto !important;
-  height: 50px;
-  width: 550px;
-  top: 0;
-}
- 
-@mixin footer_references_style {
-  margin: 0 !important;
-  text-align: right;
-}
-
-.wrapper-footer {
-  footer {
-    .colophon {
-      width: flex-grid(1,2) !important;
-
-      .nav-colophon {
-
-        li {
-          a {
-            color: tint($black, 50%);
-            font-size: 20px;
-          }
-        }
-      }
-      .copyright {
-        margin: 10px 0 8px 0 !important;
-      }
-    }
-    .powered-by {
-      width: flex-grid(1,2) !important;
-    }
-  }
-}
-.content-wrapper {
-  /*min-height: 75% !important;*/
-  min-height: 100% !important;
-  padding-bottom: 170px !important;
-  padding-top: 77px !important;
-  margin-bottom: -130px !important;
-  box-sizing: border-box;
-  margin-top: -77px !important;
-  background: $white !important;
-}
-.discusssion .content-wrapper {
-  padding-bottom: 180px !important;
-  margin-bottom: -180px !important;
-}
-html, body {
-  height: 100%;
-  font-family: $body-font-family !important;
-}
-.window-wrap {
-  height: 100%;
-  min-height: 100%;
-}
-.home {
-  > header {
-    .title {
-      width: flex-grid(8) !important;
-    }
-  }
-}
 
 .course-info {
   .course-sidebar {
     > section {
-      &.course-summary {
-        margin-bottom: 100px !important;
-      }
-      
       &.social-widgets {
         border-width: 0px;
         box-shadow: none;
@@ -291,66 +219,6 @@ html, body {
   font-weight: 700;
 }
 
-header.global.slim {
-  h2 {
-    text-shadow: none !important;
-  }
-}
-
-.header-global.slim h2 .course-name {
-    font-weight: bold !important;
-}
-.header-global.slim div.course-header {
-    width: 80% !important;
-    text-overflow: ellipsis;
-    overflow: hidden;
-    display: inline-block;
-    white-space: nowrap;
-}
-
-body:not(.view-in-course):not(.discussion):not(.None) .header-global.slim div.course-header {
-  text-align: left;
-  font-size: 1.1rem;
-  width: 60% !important;
-  margin-top: 0;
-}
-body:not(.view-in-course):not(.discussion):not(.None) .header-global.slim h1.hd.logo-header {
-  text-align: left;
-}
-
-.header-global.slim h2 .provider {
-    font-weight: normal !important;
-}
-
-.header-global .wrapper-header .course-header {
-  margin-left: 0;
-}
-
-.header-global .wrapper-header {
-  box-sizing: border-box;
-}
-
-.header-global.slim ol.user {
-  margin-top: -4px;
-}
-
-.header-global .wrapper-user-menu a.menu-title {
-  padding: 0;
-  position: relative;
-  display: block;
-  background-color: $gray-3;
-  text-transform: none;
-  font-size: 14px;
-  font-weight: bold;
-  letter-spacing: 0;
-  border-top-left-radius: 3px;
-  border-bottom-left-radius: 3px;
-  height: 42px;
-  border: 1px solid #c6c6c6 !important;
-  float: left;
-  box-shadow: 0 1px 0 0 rgba(255,255,255,0.6);
-  padding-right: 10px;
-}
 .dropdown-menu-container .menu-image {
   max-width: 40px;
   border-radius: 10%;
@@ -365,41 +233,6 @@ body:not(.view-in-course):not(.discussion):not(.None) .header-global.slim h1.hd.
   margin: 0 !important;
   border-top-right-radius: 3px;
   border-bottom-right-radius: 3px;
-}
-
-.home>header {
-  height: 460px;
-}
-
-.home>header .outer-wrapper {
-  padding: 240px 10px 0 !important;
-}
-
-.header-global .user .user-link .label-username{
-  margin: 0 10px 0 10px !important;
-  line-height: 40px;
-}
-
-.header-global .user>.primary>a {
-  border-top-left-radius: 3px;
-  border-bottom-left-radius: 3px;
-  height: 42px;
-  border: 1px solid #c6c6c6 !important;
-}
-
-.header-global .user .user-dropdown {
-  height: 42px;
-  border-top-left-radius: 0;
-  border-bottom-left-radius: 0;
-  border-top-right-radius: 3px;
-  border-bottom-right-radius: 3px;
-  box-shadow: 0 1px 0 0 rgba(255,255,255,0.6) !important;
-  background-color: $gray-3 !important;
-  border: 1px solid #c6c6c6 !important;
-}
-
-.header-global .user .user-dropdown-menu {
-  top:51px !important;
 }
 
 .login-register, .login-register-content, .financial-assistance-wrapper .financial-assistance-form {
@@ -423,7 +256,7 @@ body:not(.view-in-course):not(.discussion):not(.None) .header-global.slim h1.hd.
 .discussion .wrapper-course-material,
 .discussion .content-wrapper,
 .discussion .window-wrap {
-  background: $gray-2 !important;
+  background: $gray-1 !important;
 }
 
 .view-in-course .container>div {
@@ -433,60 +266,6 @@ body:not(.view-in-course):not(.discussion):not(.None) .header-global.slim h1.hd.
 .wrapper-course-material .course-tabs li a, 
 .wrapper-course-material .course-tabs li a:visited {
   color: #666;
-}
-
-.header-global.slim h1 {
-  color: $lighter-base-font-color !important;
-  text-shadow: none !important;
-  display: block;
-  //width: 55% !important;
-  float: left;
-  font-weight: 600;
-  letter-spacing: 0;
-  margin-top: 9px;
-  margin-bottom: 0;
-  //text-transform: none;
-  //white-space: nowrap;
-  //text-overflow: ellipsis;
-  //overflow: hidden;
-  font-family: $body-font-family !important;
-}
-
-.header-global.slim .course-header {
-  width: auto;
-}
-
-.header-global.slim h1 .logo {
-  margin: 0 10px 0 0;
-  padding-right: 20px;
-}
-
-.header-global h1 .logo a {
-  line-height: 32px;
-}
-
-.header-global.slim h1 .logo:before {
-  content: "";
-  display: block;
-  height: 35px;
-  position: absolute;
-  right: 3px;
-  top: 0;
-  width: 1px;
-  background-image: linear-gradient(180deg, rgba(200,200,200,0) 0%, #c8c8c8 50%, rgba(200,200,200,0));
-  height: 100%;
-  width: 1px;
-}
-
-.header-global.slim h1.hd.logo-header {
-  margin-top: 0;
-  width: 80%;
-}
-
-.header-global.slim h1.hd.logo-header .course-header {
-  margin: 5px 0px 0px 0px;
-  text-overflow: ellipsis;
-  overflow: hidden;
 }
 
 .wrapper-footer {
@@ -517,10 +296,6 @@ body:not(.view-in-course):not(.discussion):not(.None) .header-global.slim h1.hd.
 .wrapper-footer footer#footer-openedx ol,
 .wrapper-footer footer#footer-openedx ul {
   margin-left: 0 !important;
-}
-
-.header-global.slim .nav-main, .header-global.slim .nav-global {
-  display: none;
 }
 
 .login-register .action-primary {
@@ -592,6 +367,10 @@ body:not(.view-in-course):not(.discussion):not(.None) .header-global.slim h1.hd.
   max-width: 1180px !important;
 }
 
+.wrapper-footer {
+  background-color: #2a3b4c !important;
+}
+
 footer a.logo {
   margin-right: 20px;
 }
@@ -599,15 +378,6 @@ footer a.logo {
 .view-course-info .home {
   display: none !important;
 }
-
-.course-content .bookmark-button {
-    width: 180px;
-}
-
-//#discussion-container .loading-animation {
-//  background: url('../../images/spinner.gif') center no-repeat;
-//  height: 20px;
-//}
 
 ul.cert_regeneration div.cert_regen_hint {
   display: inline-block;
@@ -624,4 +394,128 @@ ul.cert_regeneration a.btn.cert_regen_hint_toggle {
 
 div.modal.staff-modal {
   margin-left: -670px !important;
+}
+
+@media (max-width: 1023px) {
+  .hd-2, .xblock .xblock h2 {
+    font-size: 1em !important;
+  }
+
+  .profile-wrapper .course-info .grade-detail-graph {
+    width: 100% !important;
+    overflow: scroll !important;
+  }
+}
+
+header.global-header {
+  background-color: #2a3b4c !important;
+}
+
+.global-header .nav-links .main .nav-tab a {
+  color: $dark-color !important;
+}
+
+@media(min-width:992px) {
+  /*.is-authenticated .global-header .nav-links .secondary,
+  .view-in-course .global-header .nav-links .secondary,
+  .discussion .global-header .nav-links .secondary,
+  .None .global-header .nav-links .secondary,
+  .view-profile .global-header .nav-links .secondary
+    background-color: $white;
+    border-radius: 5px;
+    height: 40px !important;
+  }*/
+  .global-header .nav-links .secondary .toggle-user-dropdown {
+    background-color: #fbfbfb;
+    border-bottom-right-radius: 5px;
+    height: 20px !important;
+    display: inline-block;
+    border-top-right-radius: 5px;
+    line-height: 20px;
+    margin-left: -5px;
+    box-sizing: content-box !important;
+  }
+  .global-header .nav-links .secondary a.menu-title {
+    background-color: #fbfbfb;
+    border-top-left-radius: 5px;
+    height: 40px !important;
+    display: inline-block;
+    line-height: 40px;
+    border-bottom-left-radius: 5px;
+  }
+}
+
+.global-header .nav-links .secondary .user-image-frame {
+  margin: -4px 5px 0 0 !important;
+  width: 38px !important;
+}
+
+.global-header .nav-links .secondary .nav-item {
+  padding: 0 !important;
+  margin: 0 !important;
+  line-height: 1em !important;
+}
+
+.global-header .hamburger-menu .line {
+  background: $white !important;
+}
+
+.global-header .header-logo .course-header {
+  color: $dark-color !important;
+  text-align: left;
+}
+
+body.home-page .content-wrapper {
+  padding: 0 0 10px !important;
+}
+
+body.home-page .home > header {
+  margin-top: -20px !important;
+}
+
+@media(max-width: 767px) {
+  .course-info .course-sidebar {
+    width: auto !important;
+  }
+  .course-info header.course-profile .intro-inner-wrapper .intro {
+    width: 100% !important;
+  }
+  .course-info header.course-profile .intro-inner-wrapper .media {
+    display: none !important;
+  }
+  .course-info header.course-profile .intro-inner-wrapper .intro .main-cta a.register {
+    width: auto !important;
+  }
+}
+
+.course-info .container .details .inner-wrapper section {
+  overflow: scroll;
+}
+
+.mobile-menu a {
+  color: $dark-color !important;
+}
+
+@media (max-width: 600px) and (min-width: 372px) {
+  .dashboard .main-container .my-courses .course .details .course-actions .wrapper-action-more .actions-dropdown, 
+  .dashboard .main-container .my-courses .course .details .course-actions .entitlement-actions-wrapper .actions-dropdown, 
+  .entitlement-actions-wrapper .dashboard .main-container .my-courses .course .details .course-actions .wrapper-action-more .entitlement-actions-dropdown, 
+  .dashboard .main-container .my-courses .course .details .course-actions .entitlement-actions-wrapper .entitlement-actions-dropdown {
+    right: auto !important;
+  }
+
+  .dashboard .main-container .my-courses .course .details .course-actions .wrapper-action-more .actions-dropdown .actions-dropdown-list::before,
+  .dashboard .main-container .my-courses .course .details .course-actions .wrapper-action-more .actions-dropdown .actions-dropdown-list::after {
+    right: 123px !important;
+  }
+}
+
+html,
+body,
+.window-wrap {
+  height: 100% !important;
+}
+
+.content-wrapper {
+  min-height: calc(100% - 242px) !important;
 }

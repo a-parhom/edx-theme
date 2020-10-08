@@ -1,22 +1,3 @@
 @import '../prometheus';
 @import 'lms/static/sass/discussion/lms-discussion-main';
 
-.response-pagination {
-  .load-response-button {
-    @include white-button;
-    @include linear-gradient(top, #6dccf1 35%, #38a8e5);
-    position: relative;
-    margin: ($baseline/2) 0;
-    border: 1px solid #2d81ad;
-    width: 100%;
-    box-shadow: 0 1px 1px $shadow-l1;
-    text-align: left;
-    font-weight: normal;
-    color: #fcfcfc;
-  }
-
-  .load-response-button:hover, .load-response-button:focus {
-    @include linear-gradient(top, #4fbbe4 35%, #2090d0);
-    border: 1px solid #297095;
-  }
-}
