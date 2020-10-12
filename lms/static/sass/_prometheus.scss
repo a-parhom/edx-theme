@@ -490,6 +490,13 @@ body.home-page .home > header {
 
 .course-info .container .details .inner-wrapper section {
   overflow: scroll;
+  -ms-overflow-style: none;  /* IE and Edge */
+  scrollbar-width: none;  /* Firefox */
+
+}
+
+.course-info .container .details .inner-wrapper section::-webkit-scrollbar {
+  display: none; /* Hide scrollbar for Chrome, Safari and Opera */
 }
 
 .mobile-menu a {
@@ -518,4 +525,8 @@ body,
 
 .content-wrapper {
   min-height: calc(100% - 242px) !important;
+}
+
+.course-info .container .wrap-instructor-info .instructor-info-action {
+  float: none !important;
 }
