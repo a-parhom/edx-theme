@@ -48,6 +48,11 @@ from six import string_types
           location.href = xhr.responseText;
         }
       } else if (xhr.status == 403) {
+        /*$('#register_error').text(
+            (xhr.responseText ? xhr.responseText : "${_("An error has occurred. Please ensure that you are logged in to enroll.") | n, js_escaped_string}")
+        ).css("display", "block");*/
+        location.href = "/register?course_id=${course.id | n, js_escaped_string }&enrollment_action=enroll";
+      } else if (xhr.status == 400) { //This means the user did not have permission
         $('#register_error').text(
             (xhr.responseText ? xhr.responseText : "${_("An error has occurred. Please ensure that you are logged in to enroll.") | n, js_escaped_string}")
         ).css("display", "block");
