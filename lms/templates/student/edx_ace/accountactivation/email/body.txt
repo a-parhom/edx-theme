@@ -1,11 +1,9 @@
 {% load i18n %}{% autoescape off %}
-{% blocktrans %}You're almost there! Use the link below to activate your account to access engaging, high-quality {{ platform_name }} courses. Note that you will not be able to log back into your account until you have activated it.{% endblocktrans %}
+Ви майже з нами! Скористайтеся посиланням, щоб активувати свій обліковий запис та отримати доступ до курсів Prometheus. Зауважте, що ви не зможете ввійти до свого облікового запису, доки ви його не активуєте.
 
 {{ confirm_activation_link }}
 
-{% blocktrans %}Enjoy learning with {{ platform_name }}.{% endblocktrans %}
+Активація підтверджує, що ви можете зареєструватись на курси на Prometheus і мати доступ до навчальних матеріалів. Якщо вам потрібна допомога, будь ласка, зверніться до нас за адресою support@prometheus.org.ua.
 
-{% blocktrans %}If you need help, please use our web form at {{ support_url }} or email {{ support_email }}.{% endblocktrans %}
-
-{% blocktrans %}This email message was automatically sent by {{ lms_url }} because someone attempted to create an account on {{ platform_name }} using this email address.{% endblocktrans %}
+Цей лист було автоматично відправлено з Prometheus, тому що хтось спробував створити обліковий запис на Prometheus використовуючи цю електронну адресу.
 {% endautoescape %}
