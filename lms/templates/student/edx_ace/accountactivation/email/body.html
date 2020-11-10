@@ -1,0 +1,64 @@
+{% extends 'ace_common/edx_ace/common/base_body.html' %}
+
+{% load django_markup %}
+{% load i18n %}
+{% load static %}
+{% block content %}
+<table width="100%" align="left" border="0" cellpadding="0" cellspacing="0" role="presentation">
+{% if route_enabled %}
+    <tr>
+        <td>
+            <p style="color: rgba(0,0,0,.75);">
+                {% filter force_escape %}
+                    {% blocktrans %}This is a routed Account Activation email for {{ routed_user }} ({{ routed_user_email }}): {{ routed_profile_name }}{% endblocktrans %}
+                {% endfilter %}
+                <br />
+            </p>
+        </td>
+    </tr>
+{% endif %}
+    <tr>
+        <td>
+            <h1>
+                {% filter force_escape %}
+                    Активація акаунту Prometheus
+                {% endfilter %}
+            </h1>
+            <p style="color: rgba(0,0,0,.75);">
+                {% filter force_escape %}
+                    Ви майже з нами! Скористайтеся посиланням, щоб активувати свій обліковий запис та отримати доступ до курсів Prometheus. Зауважте, що ви не зможете ввійти до свого облікового запису, доки ви його не активуєте.
+                {% endfilter %}
+                <br />
+            </p>
+
+        </td>
+    </tr>
+    <tr>
+        <td>
+            <p>
+                {% filter force_escape %}
+                    {% blocktrans asvar course_cta_text %}Activate Your Account{% endblocktrans %}
+                {% endfilter %}
+                {% include "ace_common/edx_ace/common/return_to_course_cta.html" with course_cta_text=course_cta_text course_cta_url=confirm_activation_link %}
+                <br />
+            </p>
+        </td>
+    </tr>
+        <td>
+            <p style="color: rgba(0,0,0,.75);">
+                Активація підтверджує, що ви можете зареєструватись на курси на Prometheus і мати доступ до навчальних матеріалів. Якщо вам потрібна допомога, будь ласка, зверніться до нас за адресою <a href="mailto:support@prometheus.org.ua">support@prometheus.org.ua</a>.
+
+                <br />
+            </p>
+        </td>
+    <tr>
+
+    <tr>
+        <td>
+            <p>
+                Цей лист було автоматично відправлено з Prometheus, тому що хтось спробував створити обліковий запис на Prometheus використовуючи цю електронну адресу.
+            </p>
+        </td>
+    </tr>
+</table>
+{% endblock %}
