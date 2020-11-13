@@ -21,7 +21,7 @@
         <td>
             <h1>
                 {% filter force_escape %}
-                    Активація акаунту Prometheus
+                    Активація облікового запису Prometheus
                 {% endfilter %}
             </h1>
             <p style="color: rgba(0,0,0,.75);">
@@ -37,7 +37,7 @@
         <td>
             <p>
                 {% filter force_escape %}
-                    {% blocktrans asvar course_cta_text %}Activate Your Account{% endblocktrans %}
+                    {% blocktrans asvar course_cta_text %}Активувати обліковий запис{% endblocktrans %}
                 {% endfilter %}
                 {% include "ace_common/edx_ace/common/return_to_course_cta.html" with course_cta_text=course_cta_text course_cta_url=confirm_activation_link %}
             </p>
@@ -55,7 +55,7 @@
     <tr>
         <td>
             <p>
-                Цей лист було автоматично відправлено з Prometheus, тому що хтось спробував створити обліковий запис на Prometheus використовуючи цю електронну адресу.
+                Цей лист було автоматично надіслано Prometheus, тому що хтось спробував створити обліковий запис на Prometheus використовуючи цю електронну адресу.
             </p>
         </td>
     </tr>
