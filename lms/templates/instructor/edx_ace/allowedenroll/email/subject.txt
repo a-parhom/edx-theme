@@ -1,0 +1,4 @@
+{% load i18n %}
+{% autoescape off %}
+{% blocktrans %}Запрошуємо вас приєднатися до курсу «{{ course_name }}»{% endblocktrans %}
+{% endautoescape %}

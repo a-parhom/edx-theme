@@ -271,15 +271,21 @@ $video-thumb-url: '../images/logo_eng.png';
 .wrapper-footer {
   margin-top: 0px !important;
   clear: both;
+  padding: 25px 10px 30px 60px !important;
+  box-shadow: none !important;
 }
 
 .wrapper-preview-menu {
   position: relative;
 }
 
+.wrapper-footer footer#footer-openedx .colophon .nav-colophon {
+  margin: 5px 0 30px !important;
+}
+
 .wrapper-footer footer#footer-openedx .colophon .nav-colophon li a,
 .wrapper-footer footer#footer-openedx .copyright {
-  color: $dark-color !important;
+  color: #000 !important;
 }
 
 .wrapper-footer footer#footer-openedx .powered-by a:hover, 
@@ -367,9 +373,9 @@ $video-thumb-url: '../images/logo_eng.png';
   max-width: 1180px !important;
 }
 
-.wrapper-footer {
+/*.wrapper-footer {
   background-color: #2a3b4c !important;
-}
+}*/
 
 footer a.logo {
   margin-right: 20px;
