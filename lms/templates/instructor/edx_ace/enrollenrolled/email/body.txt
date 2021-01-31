@@ -1,4 +1,4 @@
-{% if course_id=="course-v1:LvBS+WIN101+2021_T1" %}
+{% if course_id == "course-v1:LvBS+WIN101+2021_T1" %}
 
 Вітаю, друзі!
 
