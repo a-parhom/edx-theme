@@ -3,36 +3,134 @@
 {% load i18n %}
 {% load static %}
 {% block content %}
+{% if course_id is "course-v1:LvBS+WIN101+2021_T1" %}
 <table width="100%" align="left" border="0" cellpadding="0" cellspacing="0" role="presentation">
     <tr>
         <td>
             <h1>
                 {% filter force_escape %}
-                {% blocktrans %}
-                    You have been enrolled in {{ course_name }}
-                {% endblocktrans %}
+                Запрошення зареєструватися на курс «Давид перемагає: сила асиметричного мислення»
+                {% endfilter %}
+            </h1>
+
+            <p style="color: rgba(0,0,0,.75);">
+                Вітаю, друзі!
+            </p>
+
+            <p style="color: rgba(0,0,0,.75);">
+                Мене звати Соломія Саврук, менеджерка Центру бізнес-дизайну <a href="https://lvbs.com.ua">LvBS</a>. 
+            </p>
+
+            <p style="color: rgba(0,0,0,.75);">
+                Я та мої колеги з бізнес-школи УКУ впродовж наступних 8-ми тижнів будемо асистентами на онлайн-курсі «Давид перемагає: сила асиметричного мислення», що стартує на найбільшій українській платформі онлайн-курсів Prometheus вже 1 лютого.
+            </p>
+
+            <p style="color: rgba(0,0,0,.75);">
+                Для перегляду матеріалів курсу достатньо натиснути кнопку «Переглянути курс» та увійти до Вашого особистого кабінету.<br />
+            </p>
+
+            {% filter force_escape %}
+                {% blocktrans asvar course_cta_text %}Переглянути курс{% endblocktrans %}
+            {% endfilter %}
+            {% include "ace_common/edx_ace/common/return_to_course_cta.html" with course_cta_text=course_cta_text course_cta_url=course_url %}
+ 
+            <p style="color: rgba(0,0,0,.75);">
+                Вже в понеділок <b>1 лютого о 12.00 у Вашому особистому кабінеті на Prometheus стануть доступні матеріали першої теми курсу</b>. А ми надішлемо нового листа з деталями щодо роботи надалі.
+            </p>
+
+            <p style="color: rgba(0,0,0,.75);">
+                Розклад курсу:
+                <table>
+                    <tr>
+                        <td>Блок:</td>
+                        <td>Відкриття доступу:</td>
+                    </tr>
+                    <tr>
+                        <td>1-й тиждень. <span style="color: #ff9900;">ВСТУП</span></td>
+                        <td>1 лютого</td>
+                    </tr>
+                    <tr>
+                        <td>2-й тиждень. <span style="color: #ff9900;">МАСШТАБ</span></td>
+                        <td>3 лютого </td>
+                    </tr>
+                    <tr>
+                        <td>3-й тиждень. <span style="color: #ff9900;">НЕВДАЧА</span></td>
+                        <td>10 лютого</td>
+                    </tr>
+                    <tr>
+                        <td>4-й тиждень. <span style="color: #ff9900;">ШВИДКІСТЬ</span></td>
+                        <td>17 лютого</td>
+                    </tr>
+                    <tr>
+                        <td>5-й тиждень. <span style="color: #ff9900;">ОЩАДНІСТЬ</span></td>
+                        <td>24 лютого</td>
+                    </tr>
+                    <tr>
+                        <td>6-й тиждень. <span style="color: #ff9900;">ДОСТУП</span></td>
+                        <td>3 березня </td>
+                    </tr>
+                    <tr>
+                        <td>7-й тиждень. <span style="color: #ff9900;">АЛГОРИТМИ</span></td>
+                        <td>10 березня</td>
+                    </tr>
+                    <tr>
+                        <td>8-й тиждень. <span style="color: #ff9900;">МАГНЕТИЧНІСТЬ</span></td>
+                        <td>17 березня</td>
+                    </tr>
+                    <tr>
+                        <td>9-й тиждень. <span style="color: #ff9900;">ЗВ'ЯЗКИ ТА ПРИКЛАДИ</span></td>
+                        <td>24 березня</td>
+                    </tr>
+                </table>
+            </p>
+
+            <p style="color: rgba(0,0,0,.75);"><b>Важливо</b>: на виконання підсумкового завдання після кожної навчальної теми у Вас буде рівно 2 тижні з моменту відкриття доступу. Інші навчальні матеріали теми (відеолекції, тексти тощо) після їх публікації будуть доступні вам постійно. 
+            </p>
+
+            <p style="color: rgba(0,0,0,.75);">З багатьма з Вас вже мали нагоду познайомитись, для багатьох - це перший досвід співпраці з нами. Ми докладемо максимум зусиль, аби Ви мали щонайкращі враження від спільного навчання. 
+            </p>
+
+            <p style="color: rgba(0,0,0,.75);">То ж вітаємо в спільноті та до зустрічі онлайн вже зовсім скоро!
+            </p>
+ 
+            <p style="color: rgba(0,0,0,.75);">Якщо у Вас залишаються питання - звертайтесь, будь ласка.
+            </p>
+
+            <p>
+                З найкращими побажаннями,<br/>
+                Соломія та команда LvBS
+            </p>
+
+        </td>
+    </tr>
+</table>
+{% else %}
+<table width="100%" align="left" border="0" cellpadding="0" cellspacing="0" role="presentation">
+    <tr>
+        <td>
+            <h1>
+                {% filter force_escape %}
+                Запрошуємо вас приєднатися до курсу «{{ course_name }}»
                 {% endfilter %}
             </h1>
 
             <p style="color: rgba(0,0,0,.75);">
                 {% filter force_escape %}
-                {% blocktrans %}You have been enrolled in {{ course_name }} at {{ site_name }} by a member of the course staff. This course will now appear on your {{ site_name }} dashboard.{% endblocktrans %}
+                Запрошуємо вас приєднатися до курсу «{{ course_name }}».
                 {% endfilter %}
-                <br />
+            </p>
+
+            <p style="color: rgba(0,0,0,.75);">
+                Для перегляду матеріалів курсу достатньо натиснути кнопку «Переглянути курс» та увійти до вашого особистого кабінету.<br />
             </p>
 
             {% filter force_escape %}
-                {% blocktrans asvar course_cta_text %}Access the Course Materials Now{% endblocktrans %}
+                {% blocktrans asvar course_cta_text %}Переглянути курс{% endblocktrans %}
             {% endfilter %}
             {% include "ace_common/edx_ace/common/return_to_course_cta.html" with course_cta_text=course_cta_text course_cta_url=course_url %}
-
-            <p style="color: rgba(0,0,0,.75);">
-                {% filter force_escape %}
-                {% blocktrans %}This email was automatically sent from {{ site_name }} to {{ full_name }}{% endblocktrans %}
-                {% endfilter %}
-                <br />
-            </p>
         </td>
     </tr>
 </table>
+{% endif %}
 {% endblock %}
+
