@@ -1,0 +1,58 @@
+<%page expression_filter="h"/>
+<%namespace name='static' file='../static_content.html'/>
+<%!
+from django.urls import reverse
+from django.utils.translation import ugettext as _
+%>
+
+
+
+<div id="sharecertificate" class="modal custommodal">
+  <div class="inner-wrapper">
+     <button class="close-modal" tabindex="1">
+      <span class="icon fa fa-remove" aria-hidden="true"></span>
+      <span class="sr">
+        Закрити
+      </span>
+    </button>
+     <div class="modal-content">
+       <h3>
+         Вітаємо із завершенням курсу
+         <span><a href="#" class="courselink" id="sharecertificate_modal_courselink"></a></span>
+       </h3>
+       <p>Поділіться вашим успіхом із друзями</p>
+       <ul class="socialshare">
+         <li><a class="share" href="#" id="sharecertificate_modal_facebooklink"><i class="fab fa-facebook-f" aria-hidden="true"></i></a></li>
+         <!--li><a class="share" href="#" id="sharecertificate_modal_instagramlink"><i class="fab fa-instagram" aria-hidden="true"></i></a></li-->
+         <li><a class="share" href="#" id="sharecertificate_modal_telegramlink"><i class="fab fa-telegram-plane" aria-hidden="true"></i></a></li>
+         <li><a class="share" href="#" id="sharecertificate_modal_twitterlink"><i class="fab fa-twitter" aria-hidden="true"></i></a></li>
+       </ul>
+       <a href="#" class="button loadcertificate" target="_blank" id="sharecertificate_modal_certlink"><i class="fas fa-file-download" aria-hidden="true"></i>Завантажити сертифікат</a>
+     </div>
+  </div>
+</div>
+<script type="text/javascript">
+  $(document).ready( function() {
+    $('.action-share-certificate').click(function(event) {
+      
+      var course_link = 'https://courses.prometheus.org.ua/courses/'+$(event.currentTarget).data('course-id')+'/about';
+      var cert_link = $(event.currentTarget).data('cert-link');
+      var course_name = $(event.currentTarget).data('course-name');
+
+     $('#sharecertificate_modal_certlink').attr('href', cert_link);
+     $('#sharecertificate_modal_courselink').text(course_name);
+     $('#sharecertificate_modal_courselink').attr('href', course_link);
+
+     var soc_text = "Я маю сертифікат з курсу «"+course_name+"» на Prometheus.";
+
+     var facebook_link = "https://www.facebook.com/dialog/share?app_id=345443742508330&display=popup&href="+encodeURIComponent(course_link)+"&quote="+encodeURIComponent(soc_text)+encodeURIComponent(" Переконайтесь: ")+encodeURIComponent(cert_link);
+     var telegram_link = "https://t.me/share/url?url="+encodeURIComponent(cert_link)+"&text="+encodeURIComponent(soc_text);
+     var twitter_link = "http://twitter.com/intent/tweet?text="+encodeURIComponent(soc_text)+encodeURIComponent(" Переконайтесь: ")+encodeURIComponent(cert_link);
+
+
+     $('#sharecertificate_modal_facebooklink').attr('href', facebook_link);
+     $('#sharecertificate_modal_telegramlink').attr('href', telegram_link);
+     $('#sharecertificate_modal_twitterlink').attr('href', twitter_link);
+    });
+  });
+</script>

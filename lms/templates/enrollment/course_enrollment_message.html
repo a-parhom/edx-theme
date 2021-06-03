@@ -1,0 +1,34 @@
+<%! from django.utils.translation import ugettext as _ %>
+<%page expression_filter="h"/>
+<div id="successregistration" class="modal custommodal active">
+    <div class="inner-wrapper">
+        <button class="close-modal" tabindex="1">
+            <span class="icon fa fa-remove" aria-hidden="true"></span>
+            <span class="sr">
+                Закрити
+            </span>
+        </button>
+        <div class="modal-content">
+            % if enrollments_count == 1:
+            <h3>
+                Ви зареєстровані на курс
+                <span><a href="https://courses.prometheus.org.ua/courses/${ course_id }/about" class="courselink">${course_names}</a></span>
+            </h3>
+            <h4>Ви на вірному шляху!</h4>
+            <p>Поділіться вашими планами пройти курс з друзями, щоб мати більшу мотивацію для його успішного завершення.</p>
+            <ul class="socialshare">
+                <li><a class="share" href="#"><i class="fab fa-facebook-f" aria-hidden="true"></i></a></li>
+                <li><a class="share" href="#"><i class="fab fa-instagram" aria-hidden="true"></i></a></li>
+                <li><a class="share" href="#"><i class="fab fa-telegram-plane" aria-hidden="true"></i></a></li>
+                <li><a class="share" href="#"><i class="fab fa-twitter" aria-hidden="true"></i></a></li>
+            </ul>
+            % else:
+            <h3>
+                ${_("Thank you for enrolling in:")}
+                ${course_names}
+            </h3>
+            <p>${_("We hope you enjoy the course.")}</p>
+            % endif
+        </div>
+    </div>
+</div>

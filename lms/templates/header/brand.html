@@ -17,7 +17,7 @@ from branding import api as branding_api
   <div class="logo">
     ## <a class="navbar-brand" href="${branding_api.get_home_url()}" itemprop="url">
     <a class="navbar-brand" href="https://prometheus.org.ua" itemprop="url">
-      <img class="logo-image" src="${static.url("images/logo_eng.png")}" alt="${_("{platform_name}").format(platform_name=static.get_platform_name())}" itemprop="logo" />
+      <img class="logo-image" src="${static.url("images/logo.svg")}" alt="${_("{platform_name}").format(platform_name=static.get_platform_name())}" itemprop="logo" />
     </a>
   </div>
   % if course and not disable_courseware_header:
