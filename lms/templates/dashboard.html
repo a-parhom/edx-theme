@@ -115,12 +115,6 @@ from student.models import CourseEnrollment
         </div>
     %endif
 
-    %if enrollment_message:
-        <div class="dashboard-banner">
-            ${enrollment_message | n,  decode.utf8}
-        </div>
-    %endif
-
     %if enterprise_message:
         <div class="dashboard-banner">
             ${ enterprise_message | n, decode.utf8 }
@@ -371,4 +365,10 @@ from student.models import CourseEnrollment
   </div>
 </div>
 
+%if enrollment_message:
+    ${enrollment_message | n,  decode.utf8}
+%endif
+
 <%include file="dashboard/_dashboard_entitlement_unenrollment_modal.html"/>
+
+<%include file="${static.get_template_path('dashboard/_dashboard_sharecertificate_modal.html')}" />

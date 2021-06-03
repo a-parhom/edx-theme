@@ -11,248 +11,85 @@
 <% icp_license_info = getattr(settings, 'ICP_LICENSE_INFO', {})%>
 <%namespace name='static' file='static_content.html'/>
 
-% if uses_bootstrap:
-  <div class="container-fluid wrapper-footer">
-    <footer>
-      <div class="row">
-        <div class="col-md-9">
-          <nav class="navbar site-nav navbar-expand-sm" aria-label="${_('About')}">
-            <ul class="navbar-nav">
-              ## % for item_num, link in enumerate(footer['navigation_links'], start=1):
-              ##   <li class="nav-item">
-              ##     <a class="nav-link" href="${link['url']}">${link['title']}</a>
-              ##   </li>
-              ## % endfor
-              <li class="nav-item">
-                <a id="about" href="http://prometheus.org.ua/about-us/">
-                  ${_("About")}
-                </a>
+  <!-- New footer-->
+
+  <footer id="site-footer">
+    <div class="container">
+      <div class="widget-odd widget-first widget-1 footer-col widget widget_nav_menu">
+        <div class="widget-content">
+          <h3 class="widget-title">Prometheus</h3>
+          <div class="menu-footer-menu-two-container">
+            <ul id="menu-footer-menu-two" class="menu">
+              <li id="menu-item-10615" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-10615">
+                <a href="https://prometheus.org.ua/about-us/">Про нас</a>
               </li>
-              <li class="nav-item">
-                <a id="about" href="http://prometheus.org.ua/faq/">
-                  ${_("Help")}
-                </a>
-              </li>
-              <!--li class="nav-item">
-                <a id="about" href="http://prometheus.org.ua/about-us/#contacts">
-                  ${_("Contact")}
-                </a>
-              </li-->
             </ul>
-          </nav>
-
-          <div class="wrapper-logo">
-            <p>
-              ## <a href="/">
-              <a href="https://prometheus.org.ua">
-                ## The default logo is a placeholder.
-                ## You can either replace this link entirely or update
-                ## the FOOTER_ORGANIZATION_IMAGE in Django settings.
-                ## If you customize FOOTER_ORGANIZATION_IMAGE, then the image
-                ## can be included in the footer on other sites
-                ## (e.g. a blog or marketing front-end) to provide a consistent
-                ## user experience.  See the branding app for details.
-                ## <img alt="${_('organization logo')}" src="${footer['logo_image']}">
-                <img src="${static.url('prometheus/images/logo.svg')}" height="40"/>
-              </a>
-            </p>
           </div>
-
-          ## Site operators: Please do not remove this paragraph! This attributes back to edX and makes your acknowledgement of edX's trademarks clear.
-          ## <p class="copyright">${footer['copyright']}
-          ##      % if icp_license_info.get('icp_license'):
-          ##       ${u" | {text}".format(text=icp_license_info.get('text'))}
-          ##       <a href="${icp_license_info.get('icp_license_link', '#')}">
-          ##           ${u" {icp}".format(icp=icp_license_info.get('icp_license'))}
-          ##       </a>
-          ##     % endif
-          ## </p>
-          <p class="copyright">&copy; ${_("{copyright_year} {platform_name}, some rights reserved").format(
+        </div>
+      </div>
+      <div class="widget-even widget-2 footer-col widget widget_nav_menu">
+        <div class="widget-content">
+          <h3 class="widget-title">Prometheus+</h3>
+          <div class="menu-footer-menu-two-container">
+            <ul id="menu-footer-menu-two" class="menu">
+              <li id="menu-item-8296" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-8296">
+                <a href="https://prometheus.org.ua/corporate-learning/">Корпоративне навчання</a>
+              </li>
+              <li id="menu-item-8394" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-8394">
+                <a href="https://prometheus.org.ua/partnership/">Співпраця</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div class="widget_text widget-odd widget-3 large footer-col widget widget_custom_html">
+      <div class="widget_text widget-content">
+      <h3 class="widget-title">Підписатися на новини</h3>
+        <iframe src="https://prometheus.org.ua/subscribe-edx-footer/" style="border:none;min-width: 320px;min-height: 270px;"></iframe>
+      </div>
+  </div>
+<div class="widget-even widget-last widget-4 footer-col widget widget_text">
+  <div class="widget-content">
+    <h3 class="widget-title">Мобільні застосунки</h3>      
+    <div class="textwidget">
+      <div class="applogos">
+        <a class="google" target="_blank" href="https://play.google.com/store/apps/details?id=org.prometheus.android" rel="noopener"><img src="https://prometheus.org.ua/wp-content/themes/prometheus/assets/images/google-play.svg?x38305" alt=""></a>
+        <a class="apple" target="_blank" href="https://itunes.apple.com/us/app/prometheus-online-courses/id1213523151" rel="noopener"><img src="https://prometheus.org.ua/wp-content/themes/prometheus/assets/images/app-store.svg?x38305" alt=""></a>
+      </div>
+  </div>
+</div>
+</div>    
+</div>
+<div class="footer-aside">
+      <div class="container">
+        <div class="aside-inner">
+          <div class="footer-aside-nav">
+          <a href="https://prometheus.org.ua/" class="copyright">&copy; ${_("{copyright_year} {platform_name}").format(
              platform_name=settings.PLATFORM_NAME,
              copyright_year=date.today().year)}
-          </p>
-
-          <nav class="navbar legal-nav navbar-expand-sm" aria-label="${_('Legal')}">
-            <ul class="navbar-nav">
-              ## % for item_num, link in enumerate(footer['legal_links'], start=1):
-              ##   <li class="nav-item">
-              ##     <a class="nav-link" href="${link['url']}">${link['title']}</a>
-              ##   </li>
-              ## % endfor
-              ## <li class="nav-item">
-              ##   <a class="nav-link" href="${footer['edx_org_link']['url']}">${footer['edx_org_link']['text']}</a>
-              ## </li>
-              <li class="nav-item">
-                <a href="http://prometheus.org.ua/terms-service/">${_("Terms of Service and Honor Code")}</a>
-              </li>
-            </ul>
-          </nav>
-        </div>
-        <div class="col-md-3">
-          ## Please leave this link and use one of the logos provided
-          ## The OpenEdX link may be hidden when this view is served
-          ## through an API to partner sites (such as marketing sites or blogs),
-          ## which are not technically powered by Open edX.
-          % if not hide_openedx_link:
-            <div class="footer-about-openedx">
-              <p>
-                <a href="${footer['openedx_link']['url']}">
-                  <img src="https://files.edx.org/openedx-logos/edx-openedx-logo-tag-light.png" alt="Powered by Open edX" width="150" height="50" />
-                </a>
-              </p>
-            </div>
-          % endif
-        </div>
-      </div>
-    </footer>
-  </div>
-% else:
-  <div class="wrapper wrapper-footer">
-    <footer id="footer-openedx" class="grid-container"
-      ## When rendering the footer through the branding API,
-      ## the direction may not be set on the parent element,
-      ## so we set it here.
-      % if bidi:
-        dir=${bidi}
-      % endif
-    >
-      <div class="colophon">
-        <nav class="nav-colophon" aria-label="${_('About')}">
-          ## <ol>
-          ##     % for item_num, link in enumerate(footer['navigation_links'], start=1):
-          ##     <li class="nav-colophon-0${item_num}">
-          ##       <a id="${link['name']}" href="${link['url']}">${link['title']}</a>
-          ##     </li>
-          ##     % endfor
-          ## </ol>
-          <ol>
-            <li class="nav-colophon-01">
-            ## <!--<a id="about" href="${marketing_link('ABOUT')}">-->
-            <a id="about" href="http://prometheus.org.ua/about-us/">
-                ${_("About")}
-            </a>
-            </li>
-            ## <!--</li>
-            ## <li class="nav-colophon-02">
-            ## <a id="jobs" href="${marketing_link('JOBS')}">
-            ##     ${_("Jobs")}
-            ## </a>
-            ## </li>-->
-            <!--li class="nav-colophon-03">
-            ## <!--<a id="press" href="${marketing_link('PRESS')}">-->
-            <a id="press" href="http://prometheus.org.ua/prometheus-start/">
-                ${"Преса"}
-            </a>
-            </li-->
-            <li class="nav-colophon-04">
-            <!--<a id="faq" href="${marketing_link('FAQ')}">-->
-            <a id="faq" href="http://prometheus.org.ua/faq/">
-                ${_("Help")}
-            </a>
-            </li>
-            <!--li class="nav-colophon-05">
-            ## <!--<a id="contact" href="${marketing_link('CONTACT')}">-->
-            <a id="contact" href="http://prometheus.org.ua/about-us/#contacts">
-                ${_("Contact")}
-            </a>
-            </li-->
-        </ol>
-        </nav>
-
-        % if context.get('include_language_selector', footer_language_selector_is_enabled()):
-            <%include file="${static.get_template_path('widgets/footer-language-selector.html')}"/>
-        % endif
-
-        ## <div class="wrapper-logo">
-        ##   <p>
-        ##     <a href="/">
-              ## The default logo is a placeholder.
-              ## You can either replace this link entirely or update
-              ## the FOOTER_ORGANIZATION_IMAGE in Django settings.
-              ## If you customize FOOTER_ORGANIZATION_IMAGE, then the image
-              ## can be included in the footer on other sites
-              ## (e.g. a blog or marketing front-end) to provide a consistent
-              ## user experience.  See the branding app for details.
-        ##       <img alt="${_('organization logo')}" src="${footer['logo_image']}">
-        ##     </a>
-        ##   </p>
-        ## </div>
-
-        ## Site operators: Please do not remove this paragraph! This attributes back to edX and makes your acknowledgement of edX's trademarks clear.
-        ##   <p class="copyright">${footer['copyright']}
-        ##       % if icp_license_info.get('icp_license'):
-        ##         ${u" | {text}".format(text=icp_license_info.get('text'))}
-        ##         <a href="${icp_license_info.get('icp_license_link', '#')}">
-        ##             ${u" {icp}".format(icp=icp_license_info.get('icp_license'))}
-        ##         </a>
-        ##       % endif
-        ##   </p>
-        <p class="copyright">&copy; ${_("{copyright_year} {platform_name}, some rights reserved").format(
-           platform_name=settings.PLATFORM_NAME,
-           copyright_year=date.today().year)}
-        </p>
-
-        ## <nav class="nav-legal" aria-label="${_('Legal')}">
-        ##   <ul>
-        ##     % for item_num, link in enumerate(footer['legal_links'], start=1):
-        ##       <li class="nav-legal-0${item_num}">
-        ##         <a href="${link['url']}">${link['title']}</a>
-        ##       </li>
-        ##     % endfor
-        ##     <li><a href="${footer['edx_org_link']['url']}">${footer['edx_org_link']['text']}</a></li>
-        ##   </ul>
-        ## </nav>
-        <nav class="nav-legal">
-            <ul>
-              <li class="nav-legal-02">
-              ## <li class="nav-legal-01">
-          ## <!--<a href="${marketing_link('TOS')}">${_("Terms of Service and Honor Code")}</a>-->
-                <a href="http://prometheus.org.ua/terms-service/">${_("Terms of Service and Honor Code")}</a>
-              </li>
-              ## <li class="nav-legal-02">
-              ##   <a href="${marketing_link('PRIVACY')}">${_("Privacy Policy")}</a>
-              ## </li>
-            </ul>
-        </nav>
-      </div>
-
-      ## Please leave this link and use one of the logos provided
-      ## The OpenEdX link may be hidden when this view is served
-      ## through an API to partner sites (such as marketing sites or blogs),
-      ## which are not technically powered by OpenEdX.
-      ## % if not hide_openedx_link:
-      ## <div class="footer-about-openedx">
-      ##   <p>
-      ##     <a href="${footer['openedx_link']['url']}">
-      ##       <img src="${footer['openedx_link']['image']}" alt="${footer['openedx_link']['title']}" width="140" />
-      ##     </a>
-      ##   </p>
-      ## </div>
-      ## % endif
-      <div class="powered-by">
-          <p>
-            <a href="http://prometheus.org.ua" class="logo">
-              ## this is just a placeholder logo
-              ## feel free to change this logo to your own
-              ## <img alt="organiztion logo placeholder" src="/static/images/logo-placeholder.png">
-              <img src="${static.url('prometheus/images/logo.svg')}" height="40"/>
-            </a>
-          ## </p>
-
-        ## <p>
-          <a href="http://openedx.org/">
-            ## standard powered-by logo
-            ## <img src="https://files.edx.org/openedx-logos/edx-openedx-logo-tag.png" alt="Powered by Open edX" width="150" height="50" />
-            ## greyscale logo for dark background
-            <img src="https://files.edx.org/openedx-logos/edx-openedx-logo-tag-light.png" alt="Powered by Open edX" width="150" height="50" />
-            ## greyscale logo for light background
-            ## <img src="https://files.edx.org/openedx-logos/edx-openedx-logo-tag-dark.png" alt="Powered by Open edX" width="150" heigh="50" />
           </a>
-        </p>
+                      <div class="aside-menu-container">
+              <div class="menu-aside-menu-container"><ul id="asidemenu" class="asidemenu"><li id="menu-item-6927" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-6927"><a href="https://prometheus.org.ua/privacy-policy/">Політика конфіденційності</a></li>
+<li id="menu-item-6926" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-6926"><a href="https://prometheus.org.ua/offert/">Договір публічної оферти</a></li>
+<li id="menu-item-6925" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-6925"><a href="https://prometheus.org.ua/faq/">Допомога</a></li>
+</ul></div>               
+            </div>
+                    </div>
+          <div class="paymentlogos">
+            <img class="visa" src="https://prometheus.org.ua/wp-content/themes/prometheus/assets/images/visa-logo.svg?x38305" alt="">
+            <img class="mcard" src="https://prometheus.org.ua/wp-content/themes/prometheus/assets/images/mastercard-logo.svg?x38305" alt="">
+          </div>
+                      <div class="social-menu-container">
+              <div class="menu-social-links-menu-container"><ul id="socialmenu" class="socialmenu"><li id="menu-item-6895" class="facebook menu-item menu-item-type-custom menu-item-object-custom menu-item-6895"><a target="_blank" rel="noopener" href="https://www.facebook.com/prometheusmooc">Facebook</a></li>
+<li id="menu-item-6896" class="twitter menu-item menu-item-type-custom menu-item-object-custom menu-item-6896"><a target="_blank" rel="noopener" href="https://twitter.com/prometheusmooc">Twitter</a></li>
+<li id="menu-item-6897" class="instagram menu-item menu-item-type-custom menu-item-object-custom menu-item-6897"><a target="_blank" rel="noopener" href="https://www.instagram.com/prometheus.ua">Instagram</a></li>
+</ul></div>               
+            </div>
+                  </div>
       </div>
-    </footer>
-  </div>
-% endif
+    </div>
+  </footer>
+
 % if include_dependencies:
   <%static:js group='base_vendor'/>
   <%static:css group='style-vendor'/>

@@ -29,12 +29,12 @@ from openedx.core.djangoapps.site_configuration import helpers as configuration_
 <div class="nav-links">
   <div class="main">
     % if show_dashboard_tabs:
-      <div class="mobile-nav-item hidden-mobile nav-item nav-tab">
+      <!--div class="mobile-nav-item hidden-mobile nav-item nav-tab">
         <a class="${'active ' if reverse('dashboard') == request.path else ''}tab-nav-link" href="${reverse('dashboard')}"
              aria-current="${'page' if reverse('dashboard') == request.path else 'false'}">
              ${_("Courses")}
         </a>
-      </div>
+      </div-->
       % if show_program_listing:
         <div class="mobile-nav-item hidden-mobile nav-item nav-tab">
           <a class="${'active ' if reverse('program_listing_view') in request.path else ''}tab-nav-link" href="${reverse('program_listing_view')}"
@@ -70,6 +70,11 @@ from openedx.core.djangoapps.site_configuration import helpers as configuration_
     <!--div class="mobile-nav-item hidden-mobile nav-item">
       <a class="help-link" href="${help_link}" rel="noopener" target="_blank">${_("Help")}</a>
     </div-->
+
+    <a class="button help" href="https://prometheus.org.ua/faq/" target="_blank">${_("Help")}</a>
+
     <%include file="user_dropdown.html"/>
+
+    <a href="https://prometheus.org.ua/courses-catalog/" class="button">Всі курси</a>
   </div>
 </div>
