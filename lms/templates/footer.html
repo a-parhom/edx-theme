@@ -44,8 +44,32 @@
       </div>
       <div class="widget_text widget-odd widget-3 large footer-col widget widget_custom_html">
       <div class="widget_text widget-content">
-      <h3 class="widget-title">Підписатися на новини</h3>
-        <iframe src="https://prometheus.org.ua/subscribe-edx-footer/" style="border:none;min-width: 320px;min-height: 270px;"></iframe>
+        <h3 class="widget-title">Підписатися на новини</h3>
+        <iframe id="subscribe-iframe" src="https://prometheus.org.ua/subscribe-edx-footer/" style="border:none;min-width: 320px;min-height: 150px;"></iframe>
+        <script type="text/javascript" src="https://mozilla.github.io/jschannel/src/jschannel.js"></script>
+        <script type="text/javascript">
+          (function() {
+              'use strict';
+
+              var channel;
+
+              function submitCalled() {
+                  document.getElementById("subscribe-iframe").style.minHeight = '275px';
+              }
+
+              channel = Channel.build({
+                  window: document.getElementById("subscribe-iframe").contentWindow,
+                  origin: "*",
+                  scope: "JSInput"
+              });
+
+              channel.bind('submitCalled', submitCalled);
+
+              return {
+                  submitCalled: submitCalled
+              };
+          }());
+        </script>
       </div>
   </div>
 <div class="widget-even widget-last widget-4 footer-col widget widget_text">
