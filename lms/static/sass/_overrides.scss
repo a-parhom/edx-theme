@@ -741,7 +741,7 @@ footer#site-footer{
             align-items: start;
             width: 100%;
             padding-top: 28px;
-            border-top: 1px solid $main-bg;
+            border-top: 1px solid $main-bg !important;
         }
         .footer-aside-nav{
         	display: flex;
@@ -2254,4 +2254,8 @@ footer#site-footer .footer-col.large {
 .dashboard .main-container .my-courses .course .details .course-actions .wrapper-action-more .actions-dropdown .actions-dropdown-list, .dashboard .main-container .my-courses .course .details .course-actions .entitlement-actions-wrapper .actions-dropdown .actions-dropdown-list, .entitlement-actions-wrapper .dashboard .main-container .my-courses .course .details .course-actions .wrapper-action-more .entitlement-actions-dropdown .actions-dropdown-list, .dashboard .main-container .my-courses .course .details .course-actions .entitlement-actions-wrapper .entitlement-actions-dropdown .actions-dropdown-list, .entitlement-actions-wrapper .entitlement-actions-dropdown .dashboard .main-container .my-courses .course .details .course-actions .wrapper-action-more .actions-dropdown .entitlement-actions-dropdown-list, .entitlement-actions-wrapper .dashboard .main-container .my-courses .course .details .course-actions .wrapper-action-more .entitlement-actions-dropdown .entitlement-actions-dropdown-list, .dashboard .main-container .my-courses .course .details .course-actions .entitlement-actions-wrapper .entitlement-actions-dropdown .entitlement-actions-dropdown-list {
 	border-radius: 8px !important;
 	box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2) !important;
+}
+
+footer#site-footer .footer-aside .aside-inner {
+	border-top: 1px solid $main-bg !important;
 }
