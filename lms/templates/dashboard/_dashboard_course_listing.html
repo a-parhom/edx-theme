@@ -202,7 +202,7 @@ from util.course import get_link_for_about_page, get_encoded_course_sharing_utm_
                     %>
                     % if share_settings.get('DASHBOARD_FACEBOOK', False):
                         <%
-                          facebook_share_url = u"{url}?{utm_params}".format(url=share_url, utm_params=encoded_utm_parameters['facebook'])
+                          facebook_share_url = u"{url}".format(url=share_url)
                           share_text = _("I'm taking {course_name} online with {facebook_brand}. Check it out!").format(course_name=course_overview.display_name_with_default, facebook_brand=share_settings.get('FACEBOOK_BRAND', 'Prometheus'))
                           query_params = urlencode((('u', facebook_share_url), ('quote', share_text),))
                           facebook_url = 'https://www.facebook.com/sharer/sharer.php?{query}'.format(query=query_params)

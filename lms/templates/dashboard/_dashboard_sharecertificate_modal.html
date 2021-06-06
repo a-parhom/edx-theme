@@ -20,12 +20,12 @@ from django.utils.translation import ugettext as _
          Вітаємо із завершенням курсу
          <span><a href="#" class="courselink" id="sharecertificate_modal_courselink"></a></span>
        </h3>
-       <p>Поділіться вашим успіхом із друзями</p>
+       <p>Поділіться вашим успіхом з друзями</p>
        <ul class="socialshare">
-         <li><a class="share" href="#" id="sharecertificate_modal_facebooklink"><i class="fab fa-facebook-f" aria-hidden="true"></i></a></li>
-         <!--li><a class="share" href="#" id="sharecertificate_modal_instagramlink"><i class="fab fa-instagram" aria-hidden="true"></i></a></li-->
-         <li><a class="share" href="#" id="sharecertificate_modal_telegramlink"><i class="fab fa-telegram-plane" aria-hidden="true"></i></a></li>
-         <li><a class="share" href="#" id="sharecertificate_modal_twitterlink"><i class="fab fa-twitter" aria-hidden="true"></i></a></li>
+         <li><a class="share" rel="noopener" target="_blank" href="#" id="sharecertificate_modal_facebooklink"><i class="fab fa-facebook-f" aria-hidden="true"></i></a></li>
+         <!--li><a class="share" rel="noopener" target="_blank" href="#" id="sharecertificate_modal_instagramlink"><i class="fab fa-instagram" aria-hidden="true"></i></a></li-->
+         <li><a class="share" rel="noopener" target="_blank" href="#" id="sharecertificate_modal_telegramlink"><i class="fab fa-telegram-plane" aria-hidden="true"></i></a></li>
+         <li><a class="share" rel="noopener" target="_blank" href="#" id="sharecertificate_modal_twitterlink"><i class="fab fa-twitter" aria-hidden="true"></i></a></li>
        </ul>
        <a href="#" class="button loadcertificate" target="_blank" id="sharecertificate_modal_certlink"><i class="fas fa-file-download" aria-hidden="true"></i>Завантажити сертифікат</a>
      </div>
@@ -40,7 +40,7 @@ from django.utils.translation import ugettext as _
       var course_name = $(event.currentTarget).data('course-name');
 
      $('#sharecertificate_modal_certlink').attr('href', cert_link);
-     $('#sharecertificate_modal_courselink').text(course_name);
+     $('#sharecertificate_modal_courselink').text('«'+course_name+'»');
      $('#sharecertificate_modal_courselink').attr('href', course_link);
 
      var soc_text = "Я маю сертифікат з курсу «"+course_name+"» на Prometheus.";
@@ -49,10 +49,21 @@ from django.utils.translation import ugettext as _
      var telegram_link = "https://t.me/share/url?url="+encodeURIComponent(cert_link)+"&text="+encodeURIComponent(soc_text);
      var twitter_link = "http://twitter.com/intent/tweet?text="+encodeURIComponent(soc_text)+encodeURIComponent(" Переконайтесь: ")+encodeURIComponent(cert_link);
 
+     function share_window(link) {
+      var share_window_config = 'toolbar=no, location=no, status=no, menubar=no, scrollbars=yes, resizable=yes, width=640, height=480';
+      var popupWindow = window.open(link, 'shareWindow', share_window_config); 
+      popupWindow.opener = null; 
+      return false;
+     }
 
-     $('#sharecertificate_modal_facebooklink').attr('href', facebook_link);
+
+     /*$('#sharecertificate_modal_facebooklink').attr('href', facebook_link);
      $('#sharecertificate_modal_telegramlink').attr('href', telegram_link);
-     $('#sharecertificate_modal_twitterlink').attr('href', twitter_link);
+     $('#sharecertificate_modal_twitterlink').attr('href', twitter_link);*/
+
+     $('#sharecertificate_modal_facebooklink').click(function(){share_window(facebook_link);});
+     $('#sharecertificate_modal_telegramlink').click(function(){share_window(telegram_link);});
+     $('#sharecertificate_modal_twitterlink').click(function(){share_window(twitter_link);});
     });
   });
 </script>

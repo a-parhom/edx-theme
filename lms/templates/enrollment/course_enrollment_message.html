@@ -1,6 +1,32 @@
-<%! from django.utils.translation import ugettext as _ %>
 <%page expression_filter="h"/>
-<div id="successregistration" class="modal custommodal active">
+<%! 
+from django.utils.translation import ugettext as _ 
+from django.utils.http import urlencode, urlquote_plus
+%>
+
+<%
+    share_url = 'https://courses.prometheus.org.ua/courses/' + str(course_id) + '/about'
+    share_window_name = 'shareWindow'
+    share_window_config = 'toolbar=no, location=no, status=no, menubar=no, scrollbars=yes, resizable=yes, width=640, height=480'
+    facebook_share_url = u"{url}".format(url=share_url)
+    share_text = _("I'm taking {course_name} online with {facebook_brand}. Check it out!").format(course_name=course_names, facebook_brand='Prometheus')
+    query_params = urlencode((('u', facebook_share_url), ('quote', share_text),))
+    facebook_url = 'https://www.facebook.com/sharer/sharer.php?{query}'.format(query=query_params)
+
+    twitter_share_url = u"{url}".format(url=share_url)
+    twitter_url = u'https://twitter.com/intent/tweet?text=' + share_text + u'%20' + urlquote_plus(twitter_share_url)
+
+    tg_share_url = u"{url}".format(url=share_url)
+    tg_url = u'https://t.me/share/url?' + urlencode((('url',tg_share_url),)) +'&text=' + share_text
+%>
+
+<style type="text/css">
+    a[href="#successregistration"] {
+        display: none;
+    }
+</style>
+<a href="#successregistration" rel="leanModal"></a>
+<div id="successregistration" class="modal custommodal">
     <div class="inner-wrapper">
         <button class="close-modal" tabindex="1">
             <span class="icon fa fa-remove" aria-hidden="true"></span>
@@ -11,16 +37,15 @@
         <div class="modal-content">
             % if enrollments_count == 1:
             <h3>
-                Ви зареєстровані на курс
-                <span><a href="https://courses.prometheus.org.ua/courses/${ course_id }/about" class="courselink">${course_names}</a></span>
+                Ви зареєструвалися на курс
+                <span><a href="https://courses.prometheus.org.ua/courses/${ course_id }/about" class="courselink">«${course_names}»</a></span>
             </h3>
-            <h4>Ви на вірному шляху!</h4>
-            <p>Поділіться вашими планами пройти курс з друзями, щоб мати більшу мотивацію для його успішного завершення.</p>
+            <p>Поділіться новиною з друзями та навчайтеся разом!</p>
             <ul class="socialshare">
-                <li><a class="share" href="#"><i class="fab fa-facebook-f" aria-hidden="true"></i></a></li>
-                <li><a class="share" href="#"><i class="fab fa-instagram" aria-hidden="true"></i></a></li>
-                <li><a class="share" href="#"><i class="fab fa-telegram-plane" aria-hidden="true"></i></a></li>
-                <li><a class="share" href="#"><i class="fab fa-twitter" aria-hidden="true"></i></a></li>
+                <li><a class="share" rel="noopener" target="_blank" href="${facebook_url}" onclick="var popupWindow = window.open('${facebook_url}', '${share_window_name}', '${share_window_config}'); popupWindow.opener = null; return false;"><i class="fab fa-facebook-f" aria-hidden="true"></i></a></li>
+                <!--li><a class="share" href="#"><i class="fab fa-instagram" aria-hidden="true"></i></a></li-->
+                <li><a class="share" rel="noopener" target="_blank" href="${tg_url}" onclick="var popupWindow = window.open('${tg_url}', '${share_window_name}', '${share_window_config}'); popupWindow.opener = null; return false;"><i class="fab fa-telegram-plane" aria-hidden="true"></i></a></li>
+                <li><a class="share" rel="noopener" target="_blank" href="${twitter_url}" onclick="var popupWindow = window.open('${twitter_url}', '${share_window_name}', '${share_window_config}'); popupWindow.opener = null; return false;"><i class="fab fa-twitter" aria-hidden="true"></i></a></li>
             </ul>
             % else:
             <h3>
@@ -32,3 +57,8 @@
         </div>
     </div>
 </div>
+<script type="text/javascript">
+    $(document).ready( function() {
+        $('a[href="#successregistration"]').click();
+    });
+</script>
