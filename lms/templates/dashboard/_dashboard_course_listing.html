@@ -114,7 +114,8 @@ from util.course import get_link_for_about_page, get_encoded_course_sharing_utm_
                   container_string = _("Coming Soon")
                   course_date = None
               else:
-                  format = 'shortDate'
+                  ##format = 'shortDate'
+                  format = 'defaultFormat'
                   if course_overview.has_ended():
                       container_string = _("Ended - {date}")
                       course_date = course_overview.end
