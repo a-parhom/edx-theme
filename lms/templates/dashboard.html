@@ -101,6 +101,49 @@ from student.models import CourseEnrollment
   % endif
 </%block>
 
+<%block name="marketing_hero">
+<style type="text/css">
+  .marketing-hero {
+    background: white;
+  }
+  .elementor-image {
+    margin: 0px 180px 0px 180px;
+    padding: 0px 0px 0px 0px;
+  }
+  .elementor-image img {
+    width: 100%;
+    height: auto;
+  }
+  .elementor-image.mobile {
+    display: none;
+  }
+  @media (max-width: 1024px) {
+    .elementor-image {
+      display: none;
+    }
+    .elementor-image.mobile {
+      display: block;
+      margin: 0px 0px 0px 0px;
+    }
+  }
+  @media (max-width: 767px) {
+    .elementor-image.mobile {
+      margin: 0px 0px 0px 0px;
+    }
+  }
+</style>
+<div class="elementor-image">
+  <a href="https://prometheus.org.ua/donate/">
+    <img width="1441" height="141" src="https://prometheus.org.ua/wp-content/uploads/2021/07/обкладинка_краудфандинг-05.png?x98954" class="attachment-full size-full" alt="" loading="lazy" srcset="https://prometheus.org.ua/wp-content/uploads/2021/07/обкладинка_краудфандинг-05.png 1441w, https://prometheus.org.ua/wp-content/uploads/2021/07/обкладинка_краудфандинг-05-300x29.png 300w, https://prometheus.org.ua/wp-content/uploads/2021/07/обкладинка_краудфандинг-05-1024x100.png 1024w, https://prometheus.org.ua/wp-content/uploads/2021/07/обкладинка_краудфандинг-05-768x75.png 768w, https://prometheus.org.ua/wp-content/uploads/2021/07/обкладинка_краудфандинг-05-1200x117.png 1200w" sizes="(max-width: 1441px) 100vw, 1441px">
+  </a>
+</div>
+<div class="elementor-image mobile">
+  <a href="https://prometheus.org.ua/donate/">
+    <img src="https://prometheus.org.ua/wp-content/uploads/2021/07/700.png?x98954" title="700" alt="700">
+  </a>
+</div>
+</%block>
+
 <div class="dashboard-notifications" tabindex="-1">
 
     %if display_sidebar_account_activation_message:
